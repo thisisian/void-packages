@@ -11,6 +11,8 @@ license="MIT"
 checksum=c2f6c56167f0acdbe3dc37cca9c1a19260c040f2d4800e3529a21ad7cce275fe
 
 do_build() {
+        #patch -p1 < "${FILESDIR}/tilegap.diff"
+        #patch -p1 < "${FILESDIR}/keycodes.diff"
 	cp ${FILESDIR}/config.h config.h
 	sed -i "/CFLAGS/s|\${CPPFLAGS}|& $CFLAGS|g" config.mk
 	sed -i "/LDFLAGS/s|\-s|$LDFLAGS|g" config.mk
