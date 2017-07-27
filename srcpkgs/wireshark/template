@@ -1,6 +1,6 @@
 # Template file for 'wireshark'
 pkgname=wireshark
-version=2.2.7
+version=2.4.0
 revision=1
 build_style=gnu-configure
 configure_args="--with-ssl --with-pcap --with-libcap --with-zlib --with-lua
@@ -14,10 +14,8 @@ short_desc="A network protocol analyzer"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="https://www.wireshark.org"
 license="GPL-2"
-# XXX ovh is blocked (repo4.voidlinux.eu can't download this).
-distfiles="https://www.wireshark.org/download/src/${pkgname}-${version}.tar.bz2"
-#distfiles="https://sources.voidlinux.eu/${pkgname}-${version}/${pkgname}-${version}.tar.bz2"
-checksum=689ddf62221b152779d8846ab5b2063cc7fd41ec1a9f04eefab09b5d5486dbb5
+distfiles="https://www.wireshark.org/download/src/${pkgname}-${version}.tar.xz"
+checksum=890bb41b826ff04e98fb089446ab37e5871e16205278bfeffc2a7c7364de3b04
 system_groups="wireshark"
 
 CFLAGS="-I${XBPS_CROSS_BASE}/usr/include/lua5.2"
