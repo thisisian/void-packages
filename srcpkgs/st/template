@@ -15,6 +15,7 @@ distfiles="http://dl.suckless.org/${pkgname}/${pkgname}-${version}.tar.gz"
 checksum=f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000
 
 pre_build() {
+        patch -p1 < "${FILESDIR}/scrollback.diff"
 	cp ${FILESDIR}/config.h config.h
 	# We will use tic after install. See INSTALL.
 	sed -i 's|@tic -s st.info||g' Makefile

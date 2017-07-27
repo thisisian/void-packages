@@ -5,9 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Monospace:pixelsize=12:antialias=true:autohint=true";
+static char font[] = "Dina:pixelsize=12:antialias=true:autohint:true";
 static int borderpx = 2;
-
+#define histsize 2000
+ 
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -171,6 +172,8 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
+        { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+        { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
