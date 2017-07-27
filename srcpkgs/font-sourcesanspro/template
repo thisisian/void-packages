@@ -5,7 +5,7 @@ pkgname=font-sourcesanspro
 version=${_versionname}
 revision=1
 noarch=yes
-wrksrc=font-sourcesanspro-2.02Rro+1.075Rit
+wrksrc=source-sans-pro-2.020R-ro-1.075R-it
 #create_wrksrc=yes
 depends="font-util xbps-triggers"
 font_dirs="/usr/share/fonts/TTF /usr/share/fonts/OTF"
@@ -19,6 +19,6 @@ checksum=bb45283fa9979c4821c99da3b54313012821aba0246e2ec0057f2b03ca24912c
 do_install() {
     vmkdir usr/share/fonts/TTF
     vmkdir usr/share/fonts/OTF
-    install -m644 ${wrksrc}/source-sans-pro-2.020R-ro-1.075R-it/TTF/*.ttf ${DESTDIR}/usr/share/fonts/TTF
-    install -m644 ${wrksrc}/source-sans-pro-2.020R-ro-1.075R-it/OTF/*.otf ${DESTDIR}/usr/share/fonts/OTF
+    install -m644 ${wrksrc}/TTF/*.ttf ${DESTDIR}/usr/share/fonts/TTF
+    install -m644 ${wrksrc}/OTF/*.otf ${DESTDIR}/usr/share/fonts/OTF
 }
