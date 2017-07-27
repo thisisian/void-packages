@@ -1,18 +1,16 @@
-#include "push.c"
-#include "X11/XF86keysym.h"
+/* See LICENSE file for copyright and license details. */
 
 /* appearance */
 static const char *fonts[] = {
-	"Dina:size=8"
+	"dina:size=8"
 };
-static const char dmenufont[]       = "Dina:size=8";
-static const char normbordercolor[] = "black";
-static const char normbgcolor[]     = "black";
-static const char normfgcolor[]     = "gray90";
-static const char selbordercolor[]  = "gray90";
-static const char selbgcolor[]      = "gray90";
-static const char selfgcolor[]      = "black";
-static const unsigned int gappx     = 8;
+static const char dmenufont[]       = "dina:size=8";
+static const char normbordercolor[] = "#444444";
+static const char normbgcolor[]     = "#222222";
+static const char normfgcolor[]     = "#bbbbbb";
+static const char selbordercolor[]  = "#888888";
+static const char selbgcolor[]      = "#888888";
+static const char selfgcolor[]      = "#111111";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -34,7 +32,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -44,7 +42,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -67,36 +65,20 @@ static const char *mailcmd[]  = { TERM, "-e", MAIL,  NULL };
 static const char *browsercmd[]  = { BROWSER, NULL };
 static const char *privbrowsercmd[]  = { BROWSER, "-private", NULL };
 static const char *lock[]  = { "slock", NULL };
-
-/* media keys */
-static const char *vold[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *volu[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *play[] = { "mpc", "toggle", NULL };
-static const char *next[] = { "mpc", "next", NULL };
-static const char *prev[] = { "mpc", "prev", NULL };
-static const char *stop[] = { "mpc", "stop", NULL };
-static const char *bklu[] = { "xbacklight", "-steps", "1", "-time", "0", "-inc", "5", NULL };
-static const char *bkld[] = { "xbacklight", "-steps", "1", "-time", "0", "-dec", "5", NULL };
-static const char *prts[] = { "scrot", "~/temp/screenshot.png", NULL};
-
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ControlMask|ShiftMask, XK_b,      spawn,          {.v = privbrowsercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_k,      pushup,         {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_x,      killclient,     {0} },
@@ -111,16 +93,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-        {0,                             XF86XK_AudioLowerVolume,    spawn,          {.v = vold } },
-        {0,                             XF86XK_AudioRaiseVolume,    spawn,          {.v = volu } },
-        {0,                             XF86XK_AudioMute,           spawn,          {.v = mute } },
-        {0,                             XF86XK_AudioPlay,           spawn,          {.v = play } },
-        {0,                             XF86XK_AudioNext,           spawn,          {.v = next } },
-        {0,                             XF86XK_AudioPrev,           spawn,          {.v = prev } },
-        {0,                             XF86XK_AudioStop,           spawn,          {.v = stop } },
-        {0,                             XF86XK_MonBrightnessUp,     spawn,          {.v = bklu } },
-        {0,                             XF86XK_MonBrightnessDown,   spawn,          {.v = bkld } },
-        { MODKEY|ControlMask|ShiftMask, XK_p,                       spawn,          {.v = prts } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
