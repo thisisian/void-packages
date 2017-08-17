@@ -1,7 +1,7 @@
 # Template file for 'rkt'
 pkgname=rkt
-version=1.27.0
-revision=1
+version=1.28.1
+revision=2
 build_style=gnu-configure
 hostmakedepends="automake wget cpio squashfs-tools bc gnupg git go"
 makedepends="acl-devel zlib-devel libressl-devel"
@@ -11,7 +11,7 @@ maintainer="Andrea Brancaleoni <abc@pompel.me>"
 license="Apache-2.0"
 homepage="https://github.com/coreos/rkt"
 distfiles="$homepage/archive/v$version.tar.gz"
-checksum=213427c551ddc912622e967b30437e13485b88dcf7021c977a3205a1b03801a1
+checksum=2610749f412ca697c57a797c8dd0024c4c215d7dd824599d8ed6f4297abd5e07
 
 patch_args="-Np1"
 nopie=yes
@@ -64,7 +64,6 @@ do_install() {
 
 rkt-stage1-fly_package() {
 	alternatives="rkt-stage1:/usr/lib/rkt/stage1.aci:/usr/lib/rkt/stage1-fly.aci"
-	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - fly stage1"
 	provides="rkt-stage1-${version}_${revision}"
 	pkg_install() {
@@ -84,7 +83,6 @@ rkt-stage1-fly_package() {
 
 rkt-stage1-coreos_package() {
 	alternatives="rkt-stage1:/usr/lib/rkt/stage1.aci:/usr/lib/rkt/stage1-coreos.aci"
-	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - coreos stage1"
 	provides="rkt-stage1-${version}_${revision}"
 	pkg_install() {
