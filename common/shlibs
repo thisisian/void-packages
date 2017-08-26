@@ -62,7 +62,7 @@ libgij.so.17 libgcj-6.2.1_1
 libgo.so.9 libgo-6.2.1_1
 libmpx.so.2 libmpx-6.2.1_1
 libmpxwrappers.so.2 libmpx-6.2.1_1
-libperl.so.5.24 perl-5.24.0_1
+libperl.so.5.26 perl-5.26.0_1
 libgmp.so.10 gmp-5.0.1_1
 libgmpxx.so.4 gmpxx-6.0.0_2
 libmpfr.so.4 mpfr-3.0.0_1
@@ -139,7 +139,7 @@ libnvidia-gtk2.so.346.47 nvidia-gtklibs-346.47_1 ignore
 libnvidia-gtk3.so.346.47 nvidia-gtklibs-346.47_1 ignore
 libnvidia-glcore.so.346.47 nvidia340-libs-340.46_1 ignore
 libnvidia-glsi.so.346.72 nvidia-libs-346.72_1 ignore
-libnvidia-fatbinaryloader.so.381.22 nvidia-libs-381.22_1 ignore
+libnvidia-fatbinaryloader.so.384.69 nvidia-libs-384.69_1 ignore
 libglapi.so.0 libglapi-7.11_1
 libgbm.so.1 libgbm-9.0_1
 librsvg-2.so.2 librsvg-2.26.0_1
@@ -910,7 +910,7 @@ libgtk-vnc-2.0.so.0 gtk-vnc-0.4.4_1
 libyaml-0.so.2 libyaml-0.1.4_1
 libgtksourceviewmm-3.0.so.0 gtksourceviewmm-3.2.0_1
 libyajl.so.2 yajl-2.0.1_1
-libconfuse.so.1 confuse-3.0_1
+libconfuse.so.2 confuse-3.2.1_1
 libclang.so.4 clang-4.0.0_1
 libLLVM-3.8.so libllvm3.8-3.8.0_1
 libLLVM-3.8.1.so libllvm3.8-3.8.1_1
@@ -1737,7 +1737,7 @@ libmsgpack.so.4 msgpack-1.1.0_1
 libmsgpackc.so.2 msgpack-1.1.0_1
 libewf.so.2 libewf-20140608_1
 libcupsfilters.so.1 libcups-filters-1.0.67_3
-libfontembed.so.1 libcups-filters-1.0.67_3
+libfontembed.so.2 libcups-filters-1.16.2_1
 libjemalloc.so.2 jemalloc-4.0.0_1
 liblucene++.so.0 Lucene++-3.0.6_1
 liblucene++-contrib.so.0 Lucene++-3.0.6_1
@@ -1996,7 +1996,7 @@ libcvm-v1client.so.1 cvm-0.97_1
 libcvm-v2client.so.1 cvm-0.97_1
 libudns.so.0 udns-0.4_1
 libcriu.so.1 criu-1.5.1_2
-libwebsockets.so.10 libwebsockets-2.2.0_1
+libwebsockets.so.11 libwebsockets-2.3.0_1
 libbitcoinconsensus.so.0 litecoin-0.10.1.2_1
 libnfc.so.0 libnfc-1.7.1_1
 libfuzzy.so.2 libfuzzy-2.12_1
@@ -2557,6 +2557,7 @@ libmono-profiler-log.so.0 mono-4.0.1.44_2
 libikvm-native.so mono-4.0.1.44_2
 libMonoPosixHelper.so mono-4.0.1.44_2
 libMonoSupportW.so mono-4.0.1.44_2
+libmono-btls-shared.so mono-5.2.0.215_1
 libxcb-xrm.so.0 xcb-util-xrm-1.0_1
 libinchi.so.0 openbabel-2.3.2_1
 libopenbabel.so.4 openbabel-2.3.2_1
@@ -2654,7 +2655,7 @@ libswipl.so.7.4 swi-prolog-7.4.1_1
 libpcre2-16.so.0 libpcre2-10.22_1
 libpcre2-32.so.0 libpcre2-10.22_1
 libpcre2-8.so.0 libpcre2-10.22_1
-libpcre2-posix.so.1 libpcre2-10.22_1
+libpcre2-posix.so.2 libpcre2-10.30_1
 libui.so.0 libui-alpha3.1_1
 libgnome-autoar-0.so.0 gnome-autoar-0.1.1_1
 libgnome-autoar-gtk-0.so.0 gnome-autoar-0.1.1_1
@@ -2822,6 +2823,7 @@ libbrotlidec.so.0.6.0 brotli-0.6.0_1
 libbrotlienc.so.0.6.0 brotli-0.6.0_1
 libfilteraudio.so filter_audio-0.0.1_1
 libarmadillo.so.7 armadillo-7.800.2_1
+libgstreamermm-1.0.so.1 gstreamermm-1.8.0_1
 libduktape.so.201 duktape-2.1.1_1
 libccgnu2-1.8.so.0 commoncpp2-1.8.1_1
 libccext2-1.8.so.0 commoncpp2-1.8.1_1
