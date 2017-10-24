@@ -1,15 +1,15 @@
 # Template file for 'bdf2psf'
 pkgname=bdf2psf
-version=1.166
+version=1.169
 revision=1
-wrksrc="console-setup-${version}"
+wrksrc="console-setup"
 depends="perl"
 short_desc="Generate console fonts from BDF source fonts"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2"
 homepage="https://packages.debian.org/sid/bdf2psf"
 distfiles="${DEBIAN_SITE}/main/c/console-setup/console-setup_${version}.tar.xz"
-checksum=9a814c14f266de9a7950264c13186ba5ac6a46e41e02317e1092751dafdd7f9d
+checksum=21cfa81c7ee18b9bdefa6a643325d00dc02b0a064fcad8d1318cd322b1f85d49
 noarch=yes
 
 post_extract() {

@@ -1,7 +1,7 @@
 # Template file for 'gopass'
 pkgname=gopass
-version=1.2.0
-revision=4
+version=1.5.0
+revision=1
 build_style=go
 go_import_path="github.com/justwatchcom/gopass"
 depends="gnupg2 git"
@@ -10,7 +10,7 @@ maintainer="Dominic Monroe <monroef4@googlemail.com>"
 license="MIT"
 homepage="https://www.justwatch.com/gopass/"
 distfiles="https://github.com/justwatchcom/gopass/archive/v${version}.tar.gz"
-checksum=0e66eef04173ecdcc7aec38a8d9ec08192f4be17322adaeb83326add7534729b
+checksum=dd220671a8886725aa3c671073d44a0b6699e498d9cd254dea579b1ecce7f9f9
 
 post_install() {
 	vlicense LICENSE

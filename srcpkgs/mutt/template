@@ -1,6 +1,6 @@
 # Template file for 'mutt'
 pkgname=mutt
-version=1.8.3
+version=1.9.1
 revision=1
 build_style=gnu-configure
 configure_args="--enable-pop --enable-imap --enable-smtp --enable-hcache
@@ -18,7 +18,7 @@ license="GPL-2"
 # changelog="http://www.mutt.org/doc/UPDATING"
 homepage="http://www.mutt.org"
 distfiles="http://ftp.mutt.org/pub/mutt/${pkgname}-${version}.tar.gz"
-checksum=9b81746d67ffeca5ea44f60893b70dc93c86d4bc10187d4dd360185e4d42ed42
+checksum=749b83a96373c6e2101ebe8c4b9a651735e02c478edb750750a5146a15d91bb1
 
 provides="mutt-0_1"
 # Begin alternatives:

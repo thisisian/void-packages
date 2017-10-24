@@ -1,7 +1,7 @@
 # Template file for 'toxcore'
 pkgname=toxcore
-version=0.1.9
-revision=1
+version=0.1.10
+revision=2
 build_style=gnu-configure
 wrksrc="c-toxcore-${version}"
 hostmakedepends="autoconf automake libtool pkg-config"
@@ -11,7 +11,7 @@ maintainer="Spencer Hill <spencernh77@gmail.com>"
 license="GPL-3"
 homepage="https://tox.chat"
 distfiles="https://github.com/TokTok/c-toxcore/archive/v${version}.tar.gz"
-checksum=f3613c2e315a481473eb3914248b632de6872af0a4912338b733e1df02eb60f8
+checksum=7ec99c71a31e612ba458d708e05174afb2852cfbb4504ccb9456bd706fc27bd1
 
 configure_args="--enable-daemon"
 system_accounts="toxbootstrapd"

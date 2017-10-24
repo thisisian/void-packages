@@ -1,6 +1,6 @@
 # Template file for 'gnome-user-docs'
 pkgname=gnome-user-docs
-version=3.24.2
+version=3.26.1.1
 revision=1
 noarch="yes"
 build_style=gnu-configure
@@ -9,7 +9,7 @@ makedepends="yelp"
 depends="yelp"
 homepage="http://www.gnome.org"
 short_desc="User documentation for GNOME"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
 license="GPL-2"
-distfiles="${GNOME_SITE}/$pkgname/${version%.*}/$pkgname-$version.tar.xz"
-checksum=c1c53059c892bf9f78c7a934ab3a05ece35e2dacd828272e74a77a4f5975e65f
+distfiles="${GNOME_SITE}/$pkgname/${version%.*.*}/$pkgname-$version.tar.xz"
+checksum=e5552842ead3eafac9d33b1002a9b6b05fb4f5aad377b7f61c9982a791cc0c51

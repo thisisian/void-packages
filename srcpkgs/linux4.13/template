@@ -1,17 +1,15 @@
 # Template file for 'linux4.13'
 pkgname=linux4.13
-_distver=4.13.0
-_patchver=rc6
-version=${_distver}${_patchver}
+version=4.13.9
 revision=1
 patch_args="-Np1"
-wrksrc="linux-${_distver%.*}-${_patchver}"
+wrksrc="linux-${version}"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.kernel.org"
 license="GPL-2"
 short_desc="The Linux kernel and modules (${version%.*} series)"
-distfiles="https://git.kernel.org/torvalds/t/linux-${_distver%.*}-${_patchver}.tar.xz"
-checksum=c29dcb48a0e77468c78dffe9b1edaa1c8e66f87083d4791a41b8ca06e35b4d1a
+distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${version}.tar.xz"
+checksum=a1dc15e4dba9a385c4112903da81c01f412b36420feefa7771797073f5352a8f
 
 nodebug=yes  # -dbg package is generated below manually
 nostrip=yes
@@ -19,7 +17,7 @@ noverifyrdeps=yes
 noshlibprovides=yes
 preserve=yes
 
-only_for_archs="i686 i686-musl x86_64 x86_64-musl armv7l armv7l-musl aarch64 aarch64-musl"
+only_for_archs="i686 i686-musl x86_64 x86_64-musl armv5tel armv5tel-musl armv7l armv7l-musl aarch64 aarch64-musl"
 hostmakedepends="bc perl kmod uboot-mkimage libressl-devel"
 
 _kernver="${version}_${revision}"
@@ -50,7 +48,7 @@ do_configure() {
 	case "$XBPS_TARGET_MACHINE" in
 		i686*) arch=i386;;
 		x86_64*) arch=x86_64;;
-		armv7*) arch=arm;;
+		armv5*|armv7*) arch=arm;;
 		aarch64*) arch=arm64;;
 	esac
 
@@ -66,6 +64,10 @@ do_configure() {
 		msg_normal "Detected a .config file for your arch, using it.\n"
 		cp -f ${FILESDIR}/${arch}-dotconfig .config
 		make ${makejobs} ARCH=$arch ${_args} oldconfig
+	elif [ -f ${FILESDIR}/${XBPS_TARGET_MACHINE%%-musl}-dotconfig ]; then
+		msg_normal "Detected a .config file for your cpu family, using it.\n"
+		cp -f ${FILESDIR}/${XBPS_TARGET_MACHINE%%-musl}-dotconfig .config
+		make ${makejobs} ARCH=$arch ${_args} oldconfig
 	else
 		msg_normal "Defaulting to 'defconfig and allmodconfig'.\n"
 		make ${makejobs} ARCH=$arch ${_args} defconfig
@@ -80,7 +82,7 @@ do_build() {
 	case "$XBPS_TARGET_MACHINE" in
 		i686*) _args="bzImage modules"; arch=i386;;
 		x86_64*) _args="bzImage modules"; arch=x86_64;;
-		armv7*) _args="zImage modules dtbs"; arch=arm;;
+		armv5*|armv7*) _args="zImage modules dtbs"; arch=arm;;
 		aarch64*) _args="Image modules dtbs"; arch=arm64;;
 	esac
 	if [ "$CROSS_BUILD" ]; then
@@ -99,7 +101,7 @@ do_install() {
 	case "$XBPS_TARGET_MACHINE" in
 		i686*) arch=x86; subarch=i386;;
 		x86_64*) arch=x86; subarch=x86_64;;
-		armv7*) arch=arm;;
+		armv5*|armv7*) arch=arm;;
 		aarch64*) arch=arm64;;
 	esac
 
@@ -261,7 +263,6 @@ do_install() {
 	# ... and run depmod again.
 	depmod -b ${DESTDIR}/usr -F System.map ${_kernver}
 }
-
 linux4.13-headers_package() {
 	preserve=yes
 	nostrip=yes

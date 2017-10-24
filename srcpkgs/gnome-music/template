@@ -1,6 +1,6 @@
 # Template file for 'gnome-music'
 pkgname=gnome-music
-version=3.24.2
+version=3.26.1
 revision=1
 lib32disabled=yes
 build_style=gnu-configure
@@ -8,13 +8,14 @@ pycompile_module="gnomemusic"
 hostmakedepends="pkg-config intltool itstool glib-devel $(vopt_if gir gobject-introspection)"
 makedepends="python3-devel python-gobject-devel python3-dbus
  grilo-devel gnome-desktop-devel libmediaart-devel tracker-devel"
-depends="python3-gobject python3-dbus desktop-file-utils python3-requests"
+depends="python3-gobject python3-dbus desktop-file-utils python3-requests
+ tracker tracker-miners"
 short_desc="GNOME music playing application"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="https://wiki.gnome.org/Apps/Music"
 license="GPL-2"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*}/$pkgname-$version.tar.xz"
-checksum=1a72b7972cac66c7aba7a4fbcbf8df99b3df7c46f26957b3e16089550d3ef62c
+checksum=7197dff12f441a52b4011512bfe8ec926f2ce4ca511f79b078e0e612d612f8c3
 
 build_options="gir"
 if [ -z "$CROSS_BUILD" ]; then

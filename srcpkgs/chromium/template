@@ -1,14 +1,14 @@
 # Template file for 'chromium'
 pkgname=chromium
 # See http://www.chromium.org/developers/calendar for the latest version
-version=58.0.3029.110
-revision=1
+version=61.0.3163.100
+revision=2
 short_desc="Google's attempt at creating a safer, faster, and more stable browser"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.chromium.org/"
 license="BSD"
 distfiles="https://commondatastorage.googleapis.com/chromium-browser-official/${pkgname}-${version}.tar.xz"
-checksum=f24cef3dd2acf9dd5ccdeeca47fea42d1c1ddff32b7375dc9e0cd35a4e8d78ff
+checksum=4135968cac6623c1d2b224494600cd274098cce41c298f8c3908b354a34c281b
 
 only_for_archs="i686 x86_64 x86_64-musl"
 lib32disabled=yes
@@ -23,7 +23,7 @@ hostmakedepends="yasm python pkg-config perl gperf bison ninja nodejs hwids
 makedepends="libpng-devel gtk+-devel gtk+3-devel nss-devel pciutils-devel
  libXi-devel libgcrypt-devel libgnome-keyring-devel cups-devel elfutils-devel
  libXcomposite-devel speech-dispatcher-devel libXrandr-devel mit-krb5-devel
- libXScrnSaver-devel alsa-lib-devel snappy-devel
+ libXScrnSaver-devel alsa-lib-devel snappy-devel libdrm-devel
  libxml2-devel libxslt-devel pulseaudio-devel nss-devel libexif-devel
  libXcursor-devel libflac-devel speex-devel libmtp-devel libwebp-devel
  libjpeg-turbo-devel libevent-devel json-c-devel harfbuzz-devel
@@ -38,7 +38,8 @@ post_extract() {
 	case "${XBPS_TARGET_MACHINE}" in
 	*-musl)
 		for f in ${FILESDIR}/musl-patches/*.patch; do
-			patch -Np0 -i $f
+			echo "Applying $f"
+			patch -Np0 -i "$f"
 		done
 		;;
 	esac
@@ -55,8 +56,7 @@ post_extract() {
 
 	# use system nodejs
 	mkdir -p third_party/node/linux/node-linux-x64/bin
-	ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
-
+	ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 }
 do_configure() {
 	local system="" bootstrap_conf="" conf=""
@@ -125,7 +125,7 @@ do_configure() {
 		use_gconf=false
 		use_sysroot=false
 		use_allocator="none"
-		use_experimental_allocator_shim=false'
+		use_allocator_shim=false'
 
 	# XXX: gold broken with musl
 	case "${XBPS_TARGET_MACHINE}" in
@@ -139,9 +139,9 @@ do_configure() {
 	# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 	# Note: These are for Void Linux use ONLY.
 	conf+='
-		google_api_key="AIzaSyCIFdBA7eQP43R6kXRwTq7j6Mvj1ITze90"
-		google_default_client_id="858256686058.apps.googleusercontent.com"
-		google_default_client_secret="sMVx271L_MAz23TW2ek3AASn"'
+		google_api_key="AIzaSyA9gWazKaHaNIPPg2hrMj6_ZSG8AFmq738"
+		google_default_client_id="126659149423-hoo6ickbk3p1u2qjsdsp0ddciurfvb4t.apps.googleusercontent.com"
+		google_default_client_secret="_ozIx2D-DKm_se_2NPwV4l5b"'
 
 
 	if [ "$build_option_nacl" ] && [ "$XBPS_TARGET_MACHINE" = "x86_64" ]; then
@@ -163,9 +163,10 @@ do_configure() {
 		use_gconf=false
 		use_sysroot=false
 		use_allocator="none"
-		use_experimental_allocator_shim=false
+		use_allocator_shim=false
 		enable_widevine=true
-		enable_hangout_services_extension=true'
+		enable_hangout_services_extension=true
+		enable_swiftshader=false' # needs clang?
 
 	# TODO: is this still broken?
 	[ "$CROSS_BUILD" ] && conf+=' enable_webrtc=false'

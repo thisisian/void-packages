@@ -1,7 +1,7 @@
 # Template build file for 'xorg-server'.
 pkgname=xorg-server
-version=1.19.3
-revision=5
+version=1.19.5
+revision=1
 build_style=gnu-configure
 configure_args="--enable-ipv6 --enable-record --enable-xorg
  --enable-xnest --enable-xephyr --enable-composite --enable-xvfb
@@ -19,7 +19,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://xorg.freedesktop.org"
 license="MIT, BSD"
 distfiles="${XORG_SITE}/xserver/${pkgname}-${version}.tar.bz2"
-checksum=677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98
+checksum=18fffa8eb93d06d2800d06321fc0df4d357684d8d714315a66d8dfa7df251447
 
 lib32disabled=yes
 

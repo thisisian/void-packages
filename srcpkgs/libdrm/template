@@ -1,6 +1,6 @@
 # Template build file for 'libdrm'.
 pkgname=libdrm
-version=2.4.83
+version=2.4.85
 revision=1
 build_style=gnu-configure
 configure_args="--enable-udev --disable-valgrind"
@@ -11,7 +11,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="https://dri.freedesktop.org/"
 license="MIT"
 distfiles="https://dri.freedesktop.org/libdrm/$pkgname-$version.tar.bz2"
-checksum=03a52669da60ead62548a35bc430aafb6c2d8dd21ec9dba3a90f96eff5fe36d6
+checksum=64e4cd87eaee38ae60b2984ef02b66159b9bdd33030040db2a04339cf15f6173
 
 pre_configure() {
 	autoreconf -fi

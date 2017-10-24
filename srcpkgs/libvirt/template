@@ -1,6 +1,6 @@
 # Template file for 'libvirt'
 pkgname=libvirt
-version=3.6.0
+version=3.8.0
 revision=1
 build_style=gnu-configure
 patch_args="-Np1"
@@ -11,7 +11,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="https://libvirt.org"
 license="LGPL-2.1"
 distfiles="https://libvirt.org/sources/${pkgname}-${version}.tar.xz"
-checksum=3a2c97f6950796f300f6a2e0404f4de8e51c3b9430cdb82738439adb0ac59e3d
+checksum=73eba834089ed0ce74e3183a7f12cf0c6f7de08e9a700b5456c62fb124f903f9
 
 # FIX https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=701649
 system_accounts="libvirt"

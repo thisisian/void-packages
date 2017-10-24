@@ -1,6 +1,6 @@
 # Template file for 'gnome-online-accounts'
 pkgname=gnome-online-accounts
-version=3.24.2
+version=3.26.1
 revision=1
 build_style=gnu-configure
 configure_args="$(vopt_enable gir introspection)
@@ -13,11 +13,11 @@ makedepends="libsoup-gnome-devel webkit2gtk-devel json-glib-devel libnotify-deve
  rest-devel gcr-devel libsecret-devel mit-krb5-devel dbus-glib-devel telepathy-glib-devel"
 depends="hicolor-icon-theme"
 short_desc="GNOME service to access online accounts"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 license="LGPL-2"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*}/$pkgname-$version.tar.xz"
-checksum=b70ad52d1541e1e5192dd060bb11552a3af5007ab477aa81d265d1cd1cf7afba
+checksum=603c110405cb89a01497a69967f10e3f3f36add3dc175b062ec4c5ed4485621b
 
 build_options="gir"
 if [ -z "$CROSS_BUILD" ]; then

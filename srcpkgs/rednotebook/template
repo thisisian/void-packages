@@ -1,6 +1,6 @@
 # Template file for 'rednotebook'
 pkgname=rednotebook
-version=2.1.0
+version=2.3
 revision=1
 noarch=yes
 build_style=python3-module
@@ -13,4 +13,4 @@ short_desc="Cross-platform, modern desktop journal"
 homepage="http://rednotebook.sourceforge.net"
 license="GPL-3"
 distfiles="https://github.com/jendrikseipp/rednotebook/archive/v${version}.tar.gz"
-checksum=cb6bfd43e5f400cf6ee11d21b0a3c20f412f04eef31dee3d7a13d87b1118cae3
+checksum=9db863fc27ef17f8e4d3ce3cd96af1e62d33aa7bf1eb229f708f1fd5ccc2eb22

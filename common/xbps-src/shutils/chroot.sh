@@ -118,6 +118,8 @@ chroot_sync_repos() {
     local f=
 
     # Copy xbps configuration files to the masterdir.
+    install -Dm644 ${XBPS_DISTDIR}/etc/xbps.conf \
+        ${XBPS_MASTERDIR}/etc/xbps.d/00-xbps-src.conf
     install -Dm644 ${XBPS_DISTDIR}/etc/repos-local.conf \
         ${XBPS_MASTERDIR}/etc/xbps.d/10-repository-local.conf
     install -Dm644 ${XBPS_DISTDIR}/etc/repos-remote.conf \
@@ -196,7 +198,9 @@ chroot_handler() {
         [ -n "$XBPS_BUILD_FORCEMODE" ] && arg="$arg -f"
         [ -n "$XBPS_MAKEJOBS" ] && arg="$arg -j$XBPS_MAKEJOBS"
         [ -n "$XBPS_DEBUG_PKGS" ] && arg="$arg -g"
-        [ -z "$XBPS_CHECK_PKGS" -o "$XBPS_CHECK_PKGS" = "0" -o "$XBPS_CHECK_PKGS" = "no" ] && arg="$arg -q"
+        [ -z "$XBPS_CHECK_PKGS" -o "$XBPS_CHECK_PKGS" = "0" -o "$XBPS_CHECK_PKGS" = "no" ] && arg="$arg -Q"
+        [ -n "$XBPS_BUILD_ONLY_ONE_PKG" -a "$XBPS_BUILD_ONLY_ONE_PKG" != "0" -a "$XBPS_BUILD_ONLY_ONE_PKG" != "no" ] && arg="$arg -1"
+        [ -n "$XBPS_QUIET" ] && arg="$arg -q"
         [ -n "$XBPS_SKIP_DEPS" ] && arg="$arg -I"
         [ -n "$XBPS_ALT_REPOSITORY" ] && arg="$arg -r $XBPS_ALT_REPOSITORY"
         [ -n "$XBPS_USE_GIT_REVS" ] && arg="$arg -G"

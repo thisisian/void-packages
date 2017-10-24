@@ -1,8 +1,9 @@
 # Template file for 'kodi'
 pkgname=kodi
-version=17.3
+version=17.4
 revision=2
 build_style=cmake
+configure_args="-DENABLE_INTERNAL_CROSSGUID=OFF"
 patch_args="-Np1"
 _codename="Krypton"
 wrksrc="xbmc-${version}-${_codename}"
@@ -11,7 +12,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.kodi.tv/"
 license="GPL-2"
 distfiles="https://github.com/xbmc/xbmc/archive/${version}-${_codename}.tar.gz"
-checksum=1de8653a3729cefd1baaf09ecde5ace01a1e3a58fbf29d48c1363f2503d331a1
+checksum=6b0886e7449fc201e0ec0584b37f9f654c429797a41e6d0b6a4b5a7fd5ec34dc
 build_wrksrc=project/cmake
 
 lib32disabled=yes

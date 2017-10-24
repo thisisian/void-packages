@@ -1,6 +1,6 @@
 # Template file for 'dovecot-plugin-pigeonhole'
 pkgname=dovecot-plugin-pigeonhole
-version=0.4.19
+version=0.4.21
 revision=2
 wrksrc="dovecot-2.2-pigeonhole-${version}"
 build_style=gnu-configure
@@ -19,7 +19,7 @@ maintainer="John Regan <john@jrjrtech.com>"
 license="LGPL-2.1"
 homepage="http://pigeonhole.dovecot.org"
 distfiles="${homepage}/releases/2.2/${wrksrc}.tar.gz"
-checksum=629204bfbdcd3480e1ebcdc246da438323c3ea5fea57480ab859e8b201ad8793
+checksum=4ae09cb788c5334d167f5a89ee70b0616c3231e5904ad258ce408e4953cfdd6a
 
 dovecot-plugin-pigeonhole-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision}"

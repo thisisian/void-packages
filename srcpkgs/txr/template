@@ -1,6 +1,6 @@
 # Template file for 'txr'
 pkgname=txr
-version=183
+version=186
 revision=1
 build_style=configure
 hostmakedepends="bison flex"
@@ -9,11 +9,7 @@ maintainer="Oliver Kiddle <okiddle@yahoo.co.uk>"
 license="2-clause-BSD"
 homepage="http://www.nongnu.org/txr/"
 distfiles="http://www.kylheku.com/cgit/txr/snapshot/${pkgname}-${version}.tar.bz2"
-checksum=3979ee0ce775d5424e557d66dc6c65d19782c43642430e976f94f7d678141af9
-
-case "$XBPS_TARGET_MACHINE" in
-	aarch64*) broken="#error port me!" ;;
-esac
+checksum=0475ee855449c1c4bcdb707c5c58a4cb3e4a1d13d6199d0c235e87285775697f
 
 do_configure() {
 	./configure --prefix=/usr --ccname="${CC}" \

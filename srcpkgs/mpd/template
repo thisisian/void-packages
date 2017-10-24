@@ -1,7 +1,7 @@
 # Template file for 'mpd'
 pkgname=mpd
-version=0.20.9
-revision=1
+version=0.20.11
+revision=2
 build_style=gnu-configure
 configure_args="--enable-opus --enable-mikmod --enable-neighbor-plugins
  --enable-soundcloud --enable-pipe-output --disable-twolame-encoder
@@ -27,7 +27,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="GPL-2"
 homepage="http://www.musicpd.org/"
 distfiles="http://www.musicpd.org/download/mpd/${version%.*}/mpd-${version}.tar.xz"
-checksum=cd77a2869e32354b004cc6b34fcb0bee56114caa2d9ed862aaa8071441e34eb7
+checksum=e9227d9daf32a63d6f34bf2ea18b3179b4a383e9d2b49d548702a37451e514bc
 
 # Package build options
 build_options="jack lame mpcdec pulseaudio libao wavpack"

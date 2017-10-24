@@ -1,19 +1,22 @@
 # Template file for 'webkit2gtk'
 pkgname=webkit2gtk
-version=2.16.6
+version=2.18.1
 revision=1
 wrksrc="webkitgtk-$version"
 build_style=cmake
-configure_args="-DPORT=GTK -DENABLE_GTKDOC=OFF -DCMAKE_LINKER=${XBPS_CROSS_TRIPLET}-gcc"
+configure_args="-DPORT=GTK -DENABLE_GTKDOC=OFF -DCMAKE_LINKER=${XBPS_CROSS_TRIPLET}-gcc
+ -DUSE_GSTREAMER_GL=OFF"
 short_desc="GTK+3 port of the WebKit2 browser engine"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="https://webkitgtk.org/"
 license="LGPL-2.1, 2-clause-BSD"
 distfiles="${homepage}/releases/webkitgtk-${version}.tar.xz"
-checksum=fc23650df953123c59b9c0edf3855e7bd55bd107820997fc72375811e1ea4b21
+checksum=9cdb7b302fbc8a2a7e1e783b80391e64f8b12d70d6ebad4eb756dd59bf3ed795
 
 # ETOOHUGE
 nodebug=1
+
+CXXFLAGS="-D_GLIBCXX_USE_C99_STDIO=1 -D_GLIBCXX_USE_C99_STDLIB=1 -Wno-expansion-to-defined"
 
 hostmakedepends="perl python pkg-config intltool gperf flex ruby glib-devel geoclue2"
 makedepends="
@@ -24,8 +27,12 @@ makedepends="
  geoclue2-devel libnotify-devel hyphen-devel"
 
 case "$XBPS_TARGET_MACHINE" in
-armv6*) configure_args+=" -DENABLE_JIT=0" CXXFLAGS="-D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8=1";;
+armv6*) configure_args+=" -DENABLE_JIT=0" CXXFLAGS+=" -D__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8=1";;
 aarch64*) configure_args+=" -DUSE_LD_GOLD=0";;
+esac
+
+case "$XBPS_TARGET_MACHINE" in
+*-musl) configure_args+=" -DENABLE_SAMPLING_PROFILER=OFF";;
 esac
 
 # Package build options

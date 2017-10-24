@@ -1,6 +1,6 @@
 # Template file for 'gnome-settings-daemon'
 pkgname=gnome-settings-daemon
-version=3.24.3
+version=3.26.1
 revision=1
 build_style=gnu-configure
 configure_args="--disable-static --disable-schemas-compile --enable-cups"
@@ -14,11 +14,11 @@ makedepends="colord-devel libxklavier-devel
  gsettings-desktop-schemas-devel"
 depends="pulseaudio hicolor-icon-theme $(vopt_if systemd upower)"
 short_desc="GNOME settings daemon"
-maintainer="Juan RP <xtraeme@voidlinux.eu>"
+maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="http://www.gnome.org"
 license="GPL-3"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*}/$pkgname-$version.tar.xz"
-checksum=68c46038bc32b7cbe933cc24fa9f1eb96127d9900c07627767ab0a802f948593
+checksum=711ac9bad06f6a4225f5eb2f4796474662f81f7077e16a4b7ee7ab974b65d893
 
 pre_configure() {
 	# XXX workaround wrong paths for build

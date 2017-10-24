@@ -1,16 +1,16 @@
 # Template file for 'pick'
 pkgname=pick
-version=1.7.0
-revision=1
+version=1.9.0
+revision=2
 build_style=gnu-configure
-hostmakedepends="automake"
+hostmakedepends="automake pkg-config"
 makedepends="ncurses-devel"
 short_desc="A fuzzy search tool for the command-line"
 maintainer="Diogo Leal <diogo@diogoleal.com>"
 license="MIT"
 homepage="https://github.com/calleerlandsson/pick/"
 distfiles="https://github.com/calleerlandsson/pick/archive/v${version}.tar.gz"
-checksum=415f3ce78f06e2b5feab45520000320fe011b1c274fb3d3a27869e2baa0dd03a
+checksum=ae842a99e64f3a22f4806e8dca6706a7c6487bdc1fb6506e6437b1c542704e7d
 
 pre_configure() {
 	./autogen.sh

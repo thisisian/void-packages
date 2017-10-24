@@ -1,6 +1,6 @@
 # Template file for 'memcached'
 pkgname=memcached
-version=1.5.0
+version=1.5.2
 revision=1
 build_style=gnu-configure
 makedepends="libevent-devel"
@@ -9,7 +9,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="3-clause-BSD"
 homepage="http://www.memcached.org"
 distfiles="http://memcached.org/files/${pkgname}-${version}.tar.gz"
-checksum=c001f812024bb461b5e4d7d0506daab63dff9614eea26f46536c3b7e1e601c32
+checksum=9ac93113bdb5d037e79c61277386564ac2e5e31d49e594f11e554e4c149b7245
 
 post_install() {
 	vlicense COPYING LICENSE

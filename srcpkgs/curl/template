@@ -1,12 +1,12 @@
 # Template build file for 'curl'.
 pkgname=curl
-version=7.55.1
-revision=1
+version=7.56.1
+revision=2
 build_style=gnu-configure
 configure_args="ac_cv_sizeof_off_t=8
  --enable-threaded-resolver --enable-ipv6 $(vopt_with rtmp)
  $(vopt_with gssapi)
- $(vopt_with ldap '--enable-ldap --enable-ldaps' '--disable-ldap --disable-ldaps')
+ $(vopt_enable ldap) $(vopt_enable ldap ldaps)
  $(vopt_with ssh ssh2) $(vopt_with ssl) $(vopt_with gnutls)
  --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt --without-libidn2"
 hostmakedepends="pkg-config perl groff"
@@ -21,7 +21,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="MIT"
 homepage="https://curl.haxx.se"
 distfiles="$homepage/download/$pkgname-$version.tar.bz2"
-checksum=e5b1a92ed3b0c11f149886458fa063419500819f1610c020d62f25b8e4b16cfb
+checksum=2594670367875e7d87b0f129b5e4690150780884d90244ba0fe3e74a778b5f90
 
 build_options="gnutls gssapi ldap rtmp ssh ssl"
 build_options_default="ssh ssl"
@@ -49,6 +49,8 @@ libcurl-devel_package() {
 	pkg_install() {
 		vmove usr/bin/curl-config
 		vmove "usr/share/man/man1/curl-config*"
+		vmove usr/share/man/man3
+		vmove usr/share/aclocal
 		vmove usr/include
 		vmove "usr/lib/*.a"
 		vmove "usr/lib/*.so"
