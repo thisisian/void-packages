@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 #define TERM "st"
 #define BROWSER "firefox"
 #define MAIL "mutt"
-#define IRC "irssi"
+#define IRC "weechat"
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -98,7 +98,7 @@ static Key keys[] = {
         /* launchers */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = term } },
-	{ MODKEY,                       XK_m,      spawn,          {.v = mail } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mail } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browser } },
 	{ MODKEY|ControlMask|ShiftMask, XK_b,      spawn,          {.v = privbrowser } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = irc } },
@@ -116,7 +116,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
+	{ MODKEY|ControlMask|ShiftMask, XK_l,      spawn,          {.v = lock } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_x,      killclient,     {0} },
