@@ -3,9 +3,9 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"Dina:size=8"
+	"terminus:pixelsize=16:antialias=false:autohint:false"
 };
-static const char dmenufont[]       = "Dina:size=8";
+static const char dmenufont[]       = "terminus:pixelsize=16:antialias=false:autohint:false";
 static const char normbordercolor[] = "black";
 static const char normbgcolor[]     = "#000044";
 static const char normfgcolor[]     = "gray90";
@@ -71,10 +71,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 /* launchers */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *term[]  = { TERM, NULL };
-static const char *mail[]  = { TERM, "-t", MAIL, "-e",  MAIL,  NULL};
+static const char *termwd[]  = { "pwd|st", NULL };
+static const char *mail[]  = { TERM, "-t", MAIL, "-e",  MAIL, NULL};
 static const char *editor[] = {"vim", "-t", "vim", "-e", "-vim", NULL};
 static const char *browser[]  = { BROWSER, NULL};
-static const char *privbrowser[]  = { BROWSER, "-private", NULL};
 static const char *lock[]  = { "slock", NULL };
 static const char *irc[] = {"st", "-t", IRC, "-e", IRC, NULL};
 static const char *raw[] = {"rawtherapee", NULL};
@@ -98,16 +98,16 @@ static Key keys[] = {
         /* launchers */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = term } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termwd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mail } },
-	{ MODKEY,                       XK_b,      spawn,          {.v = browser } },
-	{ MODKEY|ControlMask|ShiftMask, XK_b,      spawn,          {.v = privbrowser } },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = irc } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = raw } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = gimp } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = editor } },
 
         /* window management */
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_j,      pushdown,       {0} },
