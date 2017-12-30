@@ -1,6 +1,6 @@
 # Template file for 'mpd'
 pkgname=mpd
-version=0.20.11
+version=0.20.13
 revision=2
 build_style=gnu-configure
 configure_args="--enable-opus --enable-mikmod --enable-neighbor-plugins
@@ -8,7 +8,7 @@ configure_args="--enable-opus --enable-mikmod --enable-neighbor-plugins
  --disable-sidplay --enable-bzip2 --enable-zzip $(vopt_enable jack)
  $(vopt_enable lame lame-encoder) $(vopt_enable mpcdec mpc)
  $(vopt_enable pulseaudio pulse) $(vopt_enable wavpack)
- $(vopt_enable libao ao) --disable-systemd-daemon"
+ $(vopt_enable libao ao) $(vopt_enable sndio sndio) --disable-systemd-daemon"
 hostmakedepends="pkg-config"
 makedepends="
  ffmpeg-devel libmodplug-devel libmad-devel libcurl-devel faad2-devel
@@ -16,9 +16,10 @@ makedepends="
  yajl-devel libogg-devel libflac-devel libsoup-devel bzip2-devel icu-devel
  libmikmod-devel libsndfile-devel alsa-lib-devel mpg123-devel libsamplerate-devel
  libcdio-paranoia-devel zziplib-devel libmpdclient-devel opus-devel samba-devel
- libnfs-devel libupnp-devel $(vopt_if jack jack-devel) $(vopt_if lame lame-devel)
+ libnfs-devel libupnp1.8-devel $(vopt_if jack jack-devel) $(vopt_if lame lame-devel)
  $(vopt_if mpcdec libmpcdec-devel) $(vopt_if pulseaudio pulseaudio-devel)
- $(vopt_if wavpack wavpack-devel) $(vopt_if libao libao-devel)"
+ $(vopt_if wavpack wavpack-devel) $(vopt_if libao libao-devel)
+ $(vopt_if sndio sndio-devel)"
 conf_files="/etc/mpd.conf"
 system_accounts="mpd"
 mpd_homedir="/var/lib/mpd"
@@ -27,11 +28,11 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="GPL-2"
 homepage="http://www.musicpd.org/"
 distfiles="http://www.musicpd.org/download/mpd/${version%.*}/mpd-${version}.tar.xz"
-checksum=e9227d9daf32a63d6f34bf2ea18b3179b4a383e9d2b49d548702a37451e514bc
+checksum=46c1c534d80a52de00263e8ef43a6011ff9d765232443749539ef26b1b48ff40
 
 # Package build options
-build_options="jack lame mpcdec pulseaudio libao wavpack"
-build_options_default="pulseaudio libao"
+build_options="jack lame mpcdec pulseaudio libao wavpack sndio"
+build_options_default="pulseaudio libao sndio"
 
 pre_configure() {
 	sed -i '/^doc_DATA =/s,doc/mpdconf.example,,' Makefile.in

@@ -1,6 +1,6 @@
 # Template file for 'nano'
 pkgname=nano
-version=2.8.7
+version=2.9.1
 revision=1
 build_style=gnu-configure
 makedepends="file-devel zlib-devel ncurses-devel"
@@ -9,7 +9,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="https://www.nano-editor.org/"
 license="GPL-3"
 distfiles="https://www.nano-editor.org/dist/v${version%.*}/nano-$version.tar.xz"
-checksum=fbe31746958698d73c6726ee48ad8b0612697157961a2e9aaa83b4aa53d1165a
+checksum=6316d52d0d26af3e79a13dcb4db1c7a4aeac61b37fd9381e801a4189a2ecba7c
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl) CFLAGS="-DREG_STARTEND=0";;

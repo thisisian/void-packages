@@ -1,6 +1,6 @@
 # Template file for 'qutebrowser'
 pkgname=qutebrowser
-version=1.0.2
+version=1.0.4
 revision=1
 noarch=yes
 build_style=python3-module
@@ -13,8 +13,8 @@ short_desc="Keyboard-focused browser with a minimal GUI"
 maintainer="Eivind Uggedal <eivind@uggedal.com>"
 license="GPL-3"
 homepage="https://qutebrowser.org/"
-distfiles="https://github.com/The-Compiler/${pkgname}/releases/download/v${version}/${pkgname}-${version}.tar.gz"
-checksum=f33281bd6d23bdfad7fbf8b85a01ae9cbc6bd343a957bbebcdd38f9ee8ae7624
+distfiles="https://github.com/${pkgname}/${pkgname}/releases/download/v${version}/${pkgname}-${version}.tar.gz"
+checksum=79d2c1bb3372ff1f08b88e22ae0581ff1de67b3b818e896bac6e9190f2cb1f7d
 
 pre_build() {
 	a2x -f manpage doc/${pkgname}.1.asciidoc

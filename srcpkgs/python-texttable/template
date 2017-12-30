@@ -1,6 +1,6 @@
 # Template file for 'python-texttable'
 pkgname=python-texttable
-version=1.1.0
+version=1.1.1
 revision=1
 noarch=yes
 wrksrc="texttable-${version}"
@@ -13,21 +13,14 @@ maintainer="Sergi Alvarez <pancake@nopcode.org>"
 homepage="https://github.com/foutaise/texttable/"
 license="LGPL-3"
 distfiles="${PYPI_SITE}/t/texttable/texttable-${version}.tar.gz"
-checksum=50eff7f7af432b2e28c3be2f5bd60144837516f1ba63aac4b19f3257a7290c3f
+checksum=44674d1d470a9fc264c4d1eba44b74463ca0066d7b954453dd5a4f8057779c9c
 
 python3-texttable_package() {
 	noarch=yes
 	depends="python3"
 	pycompile_module="texttable.py"
-	replaces="python3.4-texttable>=0"
 	short_desc="${short_desc/Python2/Python3}"
 	pkg_install() {
 		vmove usr/lib/python3*
 	}
-}
-python3.4-texttable_package() {
-	noarch=yes
-	build_style=meta
-	short_desc="${short_desc/Python2/Python3.4} (transitional dummy package)"
-	depends="python3-texttable>=${version}_${revision}"
 }

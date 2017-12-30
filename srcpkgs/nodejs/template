@@ -1,28 +1,28 @@
 # Template file for 'nodejs'
 pkgname=nodejs
-version=8.7.0
-revision=1
+version=9.1.0
+revision=2
 wrksrc=node-v${version}
 hostmakedepends="pkg-config python $(vopt_if icu icu)"
 makedepends="zlib-devel python-devel $(vopt_if icu icu-devel)
  $(vopt_if ssl libressl-devel) $(vopt_if libuv libuv-devel)
  $(vopt_if http_parser http-parser-devel)"
-depends="python"
 short_desc="Evented I/O for V8 javascript"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 license="MIT"
 homepage="https://nodejs.org/"
 distfiles="${homepage}/dist/v${version}/node-v${version}.tar.gz"
-checksum=c7184526e5504fa2a91aff1aacd7c344451da539d73775b6d9ea8efe948d0fa8
+checksum=42dc9f4fe1db689284d5e848963a4f9af1f5092a9a167a890ccd88dcd6fd51df
 
 build_options="ssl libuv http_parser icu"
 desc_option_libuv="Enable shared libuv"
 desc_option_http_parser="Enable shared http-parser"
 desc_option_icu="Enable shared icu"
 build_options_default="libuv http_parser icu"
-nocross="https://build.voidlinux.eu/builders/armv7l_builder/builds/3073/steps/shell_3/logs/stdio"
 
 replaces="iojs>=0"
+conflicts="nodejs-lts"
+provides="nodejs-runtime-0_1"
 
 do_configure() {
 	local _args

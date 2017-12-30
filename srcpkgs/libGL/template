@@ -1,6 +1,6 @@
 # Template build file for 'libGL'.
 pkgname=libGL
-version=17.2.3
+version=17.3.1
 revision=1
 wrksrc="mesa-${version}"
 build_style=gnu-configure
@@ -13,13 +13,13 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.mesa3d.org/"
 license="MIT, LGPL-2.1"
 distfiles="https://mesa.freedesktop.org/archive/mesa-${version}.tar.xz"
-checksum=a0b0ec8f7b24dd044d7ab30a8c7e6d3767521e245f88d4ed5dd93315dc56f837
+checksum=9ae607e0998a586fb2c866cfc8e45e6f52d1c56cb1b41288253ea83eada824c1
 
 hostmakedepends="
  automake libtool flex pkg-config llvm python-Mako libxml2-python
  $(vopt_if wayland 'wayland-protocols wayland-devel')"
 makedepends="
- glproto dri2proto dri3proto presentproto libXext-devel libXxf86vm-devel
+ glproto dri2proto dri3proto presentproto libatomic-devel libXext-devel libXxf86vm-devel
  eudev-libudev-devel libdrm-devel expat-devel talloc-devel libvdpau-devel libva-devel
  libXdamage-devel libXvMC-devel libxshmfence-devel
  $(vopt_if wayland 'wayland-protocols wayland-devel')

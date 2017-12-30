@@ -1,6 +1,6 @@
 # Template file for 'python-regex'
 pkgname=python-regex
-version=2017.09.23
+version=2017.12.12
 revision=1
 wrksrc="regex-${version}"
 build_style=python2-module
@@ -12,4 +12,4 @@ maintainer="Andrea Brancaleoni <abc@pompel.me>"
 license="PSF"
 homepage="https://pypi.python.org/pypi/regex/"
 distfiles="${PYPI_SITE}/r/regex/regex-$version.tar.gz"
-checksum=80166c9e21c0171c7b502035f3ba25f43b5122def387ca6ba9706b6892fed7aa
+checksum=ee069308c2757e565cc2b6f417ba5288e76cfe4c1764b6826063f4fbd53219d7

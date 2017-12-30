@@ -22,3 +22,4 @@ pre_configure() {
 	esac
 	autoreconf -fi
 }
+

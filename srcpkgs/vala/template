@@ -1,16 +1,17 @@
 # Template file for 'vala'
 pkgname=vala
-version=0.38.2
+version=0.38.4
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config flex libxslt automake libtool"
 makedepends="libglib-devel libfl-devel graphviz-devel"
+checkdepends="dbus gir-freedesktop libgirepository-devel"
 short_desc="Compiler for the GObject type system"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="http://live.gnome.org/Vala"
 license="LGPL-2.1"
 distfiles="${GNOME_SITE}/vala/${version%.*}/vala-${version}.tar.xz"
-checksum=20d5d9c4fbd17877969dbce27e6428da67138e116b1717cc07b5b75fd6ab78a7
+checksum=2cb33a63bd17737e72f5f4f9ca4109f398500ee1f17a01ff4ef94139b07ae5e9
 
 pre_configure() {
 	autoreconf -fi

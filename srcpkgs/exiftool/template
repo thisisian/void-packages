@@ -1,6 +1,6 @@
 # Template file for 'exiftool'
 pkgname=exiftool
-version=10.64
+version=10.70
 revision=1
 noarch=yes
 wrksrc="Image-ExifTool-${version}"
@@ -13,4 +13,4 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.sno.phy.queensu.ca/~phil/exiftool/"
 license="Artistic, GPL-1"
 distfiles="http://www.sno.phy.queensu.ca/~phil/exiftool/Image-ExifTool-${version}.tar.gz"
-checksum=1632a684fa93bc1051f3ffab9cf9453c2b5e29173afd8b91b1044e4def8c42c9
+checksum=4b880a99e75fd6e0c79fab86521ef3986e6df5d57f506c841401606a6ddeabd1

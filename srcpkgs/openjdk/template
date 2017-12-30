@@ -5,8 +5,8 @@
 # TODO: find giflib patch for --with-giflib=system
 
 _java_ver=8
-_jdk_update=152
-_jdk_build=03
+_jdk_update=172
+_jdk_build=00
 _main_ver=${_java_ver}u${_jdk_update}
 _openjdk_version="openjdk-1.8.0_${_jdk_update}"
 
@@ -15,11 +15,10 @@ version="${_java_ver}u${_jdk_update}b${_jdk_build}"
 revision=1
 _repo_ver="jdk${version/b/-b}"
 nocross=yes
-nopie=yes
 wrksrc=jdk8u-jdk8u${_jdk_update}-b${_jdk_build}/
 build_style=gnu-configure
 configure_args="
- --prefix=${XBPS_DESTDIR}/${sourcepkg}-${version}/usr/lib
+ --prefix=${XBPS_DESTDIR}/${pkgname}-${version}/usr/lib
  --with-update-version=${_jdk_update}
  --with-build-number=b${_jdk_build}
  --with-milestone=fcs
@@ -56,14 +55,14 @@ distfiles="
  http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/${_repo_ver}.tar.gz>langtools-${_repo_ver}.tar.gz
  http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/${_repo_ver}.tar.gz>nashorn-${_repo_ver}.tar.gz"
 
-checksum="e5719264ea5370815c233bb8f055eacef4e4aaaef971fb84f731926ce9bc20f6
- 6968085c367e832a4b166daab89eaf61bb58acbe8d930a3d944ff2327bd846a2
- 183f958982b2a1c4f10fc834ae8e8d4ac254bf1a65373fd001ab4e58a99b0983
- ea44540bf90913ba5d122b093005d6e2ebfb0a07535187dc71f1cda639b8d185
- f3d8c2342970c229985d32bb49e84d007f50df5a6b27991b8e1473ff45832bfc
- 843a397b1d610db27b378d006ade2d98ce53d5e1f7952bf64fa865f0119e6fd0
- 4d336740d2e94d2406eb310acc64b95332e5f276143e38efe663f42f67601e7b
- 7f94034dd260c5f14a8cf3ef66b05452ca991e3d0e7a22a5513385124a8c8fc4"
+checksum="ebcd1652afec515e21309d664722595ef1ab94c3cec2199546f9dd243f4fb662
+ 861663b635f885c341602119c2ce52b2903067d7f9346a3a5dcdadb08d9f6832
+ 0cd599a3e8cb7ac552f3abedce5dc5fccbd13505e705545bf8ac3686d486f9ff
+ 9944116a28f9ece3ec1e2105cde032395a245e7072ab0b34bd3a4aaf5d1db051
+ 58815b95c6fb175d7b730e9a8462ffa74c411199eb28cda3c4dcb65584524e58
+ 2e72e4c6e1b82de21c7f620cc1aa1ad3d80a97f85879043e3fc9c4a41ce5e0b0
+ da4dc344bd516b48cadad1b522079bd6a583855f27c8d3d3e9b2d614f20730a9
+ d30458a8b7fb834293e5373d615071d50f03071346cf8905eb7dbe9fbe00cbf2"
 
 # Build is still parallel, but don't use -jN.
 disable_parallel_build=yes

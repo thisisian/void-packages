@@ -1,6 +1,6 @@
 # Template file for 'browserpass'
 pkgname=browserpass
-version=2.0.6
+version=2.0.9
 revision=1
 build_style=go
 go_import_path="github.com/dannyvankooten/browserpass"
@@ -11,7 +11,7 @@ maintainer="John <johnz@posteo.net>"
 license="MIT"
 homepage="https://github.com/dannyvankooten/browserpass"
 distfiles="https://github.com/dannyvankooten/browserpass/archive/${version}.tar.gz"
-checksum=05fa0116c305bc7dabc01ac3648991c9de30ab6323145056990bebd374d7ee9d
+checksum=f070a43568b6230f3c61a79258c93e3a857a770f36da2d022824eaefb987485a
 
 post_build() {
 	sed -i "s:%%replace%%:/usr/bin/browserpass:" chrome/host.json firefox/host.json

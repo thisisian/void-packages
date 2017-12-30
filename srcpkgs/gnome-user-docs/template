@@ -1,6 +1,6 @@
 # Template file for 'gnome-user-docs'
 pkgname=gnome-user-docs
-version=3.26.1.1
+version=3.26.2.1
 revision=1
 noarch="yes"
 build_style=gnu-configure
@@ -12,4 +12,4 @@ short_desc="User documentation for GNOME"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 license="GPL-2"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*.*}/$pkgname-$version.tar.xz"
-checksum=e5552842ead3eafac9d33b1002a9b6b05fb4f5aad377b7f61c9982a791cc0c51
+checksum=93136f5baffd160c14e1b39f0ac60b9768975edac2da2b30c945faef534af8f5
