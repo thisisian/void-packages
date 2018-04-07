@@ -1,22 +1,21 @@
 # Template file for 'firefox-esr'
 pkgname=firefox-esr
-version=52.5.2
+version=52.7.3
 revision=1
 wrksrc="firefox-${version}esr"
 short_desc="Mozilla Firefox web browser - Extended Support Release (ESR)"
 maintainer="Eivind Uggedal <eivind@uggedal.com>"
-homepage="https://www.mozilla.org/firefox/"
+homepage="https://www.mozilla.org/firefox/organizations/"
 license="MPL-2.0, GPL-2, LGPL-2.1"
 distfiles="${MOZILLA_SITE}/firefox/releases/${version}esr/source/firefox-${version}esr.source.tar.xz"
-checksum=7b27825a7446f98e59296f4a46328c65913ffd50d839e0b4359b71ec7250ca4f
+checksum=5cc68c1a7486cfbbf02aec0e9da9f87b55e7bfc68c7d5139bc1e578441aaf19f
 
-only_for_archs="i686 i686-musl x86_64 x86_64-musl"
 lib32disabled=yes
 
 hostmakedepends="autoconf213 unzip zip pkg-config perl python yasm
  $(vopt_if rust cargo)"
 makedepends="
- nss-devel gtk+-devel
+ libatomic-devel nss-devel gtk+-devel
  sqlite-devel libevent-devel libnotify-devel libvpx-devel
  hunspell-devel libXcomposite-devel libSM-devel libXt-devel
  $(vopt_if alsa alsa-lib-devel) $(vopt_if dbus dbus-glib-devel)

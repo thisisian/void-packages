@@ -1,6 +1,6 @@
 # Template file for 'filezilla'
 pkgname=filezilla
-version=3.29.0
+version=3.31.0
 revision=1
 build_style=gnu-configure
 configure_args="--disable-static --disable-manualupdatecheck --disable-autoupdatecheck"
@@ -13,7 +13,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="GPL-2"
 homepage="http://filezilla-project.org/"
 distfiles="${SOURCEFORGE_SITE}/${pkgname}/FileZilla_${version}_src.tar.bz2"
-checksum=ead1ed74f19cf33aadf814a45b742207de3a8c349dbe2a11c344966bb8705259
+checksum=14c568b7e3331b8ae6d2371aeb4f4b43fbf97f057c0af9d75165d0d8d0d2dee5
 
 if [ -n "$CROSS_BUILD" ]; then
 	hostmakedepends+=" wxWidgets-devel xdg-utils"

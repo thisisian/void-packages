@@ -1,18 +1,17 @@
 # Template file for 'intel-gpu-tools'
 pkgname=intel-gpu-tools
-version=1.20
+version=1.22
 revision=1
-build_style=gnu-configure
-configure_args="--disable-tests"
-hostmakedepends="pkg-config swig"
+build_style=meson
+hostmakedepends="pkg-config swig flex gtk-doc"
 makedepends="python3-devel libXv-devel libXrandr-devel libpciaccess-devel
  libdrm-devel cairo-devel libunwind-devel libkmod-devel procps-ng-devel"
 short_desc="Tools for development and testing of the Intel DRM driver"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="MIT"
 homepage="http://cgit.freedesktop.org/xorg/app/intel-gpu-tools/"
-distfiles="${XORG_SITE}/app/${pkgname}-${version}.tar.bz2"
-checksum=2fffe7a66789f56f301e6b60a3afe21556f34acbad8b7b29c8f3dd41f0b148e8
+distfiles="${XORG_SITE}/app/${pkgname}-${version}.tar.xz"
+checksum=3d66c1dc5110712ca4d22199b3ce9853f261be1690064edf87e69e5392e39a5c
 
 lib32disabled=yes
 only_for_archs="i686 i686-musl x86_64 x86_64-musl"

@@ -1,9 +1,10 @@
 # Template file for 'capnproto'
 pkgname=capnproto
 version=0.6.1
-revision=4
+revision=5
 wrksrc="${pkgname}-c++-${version}"
 build_style=gnu-configure
+hostmakedepends="automake libtool"
 short_desc="Cap'n Proto serialization/RPC system"
 maintainer="eater <hello@eaterofco.de>"
 license="MIT"
@@ -12,9 +13,13 @@ distfiles="${homepage}/capnproto-c++-${version}.tar.gz"
 checksum=8082040cd8c3b93c0e4fc72f2799990c72fdcf21c2b5ecdae6611482a14f1a04
 
 if [ -n "$CROSS_BUILD" ]; then
-	hostmakedepends="capnproto-devel"
-	configure_args="--with-external-capnp"
+	hostmakedepends+=" capnproto-devel"
+	configure_args+=" --with-external-capnp"
 fi
+
+pre_configure() {
+	autoreconf -vfi
+}
 
 post_install() {
 	 vlicense LICENSE.txt
@@ -36,5 +41,6 @@ capnproto-devel_package() {
 		vmove /usr/lib/libcapnp-rpc.so
 		vmove /usr/lib/libcapnp-json.so
 		vmove usr/lib/pkgconfig
+		vmove usr/lib/cmake
 	}
 }

@@ -1,8 +1,7 @@
 # Template file for 'python-google-api-python-client'
 pkgname=python-google-api-python-client
-version=1.6.4
+version=1.6.6
 revision=1
-noarch=yes
 wrksrc="${pkgname#*-}-${version}"
 build_style=python-module
 pycompile_module="apiclient googleapiclient"
@@ -13,7 +12,8 @@ maintainer="Peter Bui <pnutzh4x0r@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/google/google-api-python-client/"
 distfiles="${PYPI_SITE}/g/google-api-python-client/google-api-python-client-${version}.tar.gz"
-checksum=bb1f27740f6596f8272a2e1033d93d68e27e8ed5d22d6ab957e3f1d3f8ce05f6
+checksum=ec72991f95201996a4edcea44a079cae0292798086beaadb054d91921632fe1b
+noarch=yes
 
 python3-google-api-python-client_package() {
 	noarch=yes

@@ -1,6 +1,6 @@
 # Template file for 'openra'
 pkgname=openra
-version=20171014
+version=20180307
 revision=1
 wrksrc="OpenRA-release-${version}"
 noarch=yes
@@ -16,7 +16,7 @@ short_desc="An open-source implementation of the Red Alert engine"
 maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="GPL-3"
 distfiles="https://github.com/OpenRA/OpenRA/archive/release-${version}.tar.gz"
-checksum=ea8a6c38f22c3432bd173c15e3f3d96a7bb47c39f73db5aa5ab6df7e6980ed5a
+checksum=b775fd4845df3fdbf89c136c7267bacc57e213eedbecc31c599a8b80c3e26544
 
 
 if [ "$CROSS_BUILD" ]; then

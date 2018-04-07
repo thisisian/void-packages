@@ -1,7 +1,7 @@
 # Template file for 'qt'
 pkgname=qt
 version=4.8.7
-revision=24
+revision=25
 _distname=qt-everywhere-opensource-src
 patch_args="-Np1"
 wrksrc=${_distname}-${version}
@@ -59,6 +59,10 @@ do_configure() {
 			armv5tel)
 				_opts+=" -arch arm"
 				_spec="arm-linux-gnueabi-c++"
+				;;
+			armv5tel-musl)
+				_opts+=" -arch arm"
+				_spec="arm-linux-musleabi-c++"
 				;;
 			armv6l)
 				_opts+=" -arch arm"
@@ -184,7 +188,8 @@ _EOF
 	_opts+=" -optimized-qmake"
 	_opts+=" -no-reduce-relocations"
 	_opts+=" -dbus-linked"
-	_opts+=" -v"
+	_opts+=" -silent"
+	# _opts+=" -v"
 
 	echo "=== ./configure ${_opts}"
 	export LD_LIBRARY_PATH="${wrksrc}/lib:${LD_LIBRARY_PATH}"

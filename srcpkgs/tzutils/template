@@ -1,6 +1,6 @@
 # Template file for 'tzutils'
 pkgname=tzutils
-version=2017c
+version=2018d
 revision=1
 wrksrc="tz-${version}"
 homepage="http://www.iana.org/time-zones"
@@ -8,7 +8,7 @@ short_desc="Time zone and daylight-saving time utilities"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="Public Domain"
 distfiles="https://github.com/eggert/tz/archive/${version}.tar.gz"
-checksum=83d1c6a5910e827db88528a1a1f6f7b4ad9fe98b6076895749bf49660b02cc68
+checksum=1880517b04fe256d0f80ffc5778f9e68ff3b8f58a292bec9f5e1d373b957da16
 
 do_build() {
 	make TZDIR=/usr/share/zoneinfo CC=$CC CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"

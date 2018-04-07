@@ -1,0 +1,19 @@
+# Template file for 'aloadimage'
+pkgname=aloadimage
+version=0.5.4.5
+revision=1
+wrksrc=arcan-${version}
+build_style=cmake
+build_wrksrc=src/tools/aloadimage
+hostmakedepends="pkg-config"
+makedepends="arcan-devel libseccomp-devel"
+short_desc="Image viewer for Arcan"
+maintainer="Piraty <piraty1@inbox.ru>"
+license="BSD-3-Clause"
+homepage="https://arcan-fe.com/"
+distfiles="https://github.com/letoram/arcan/archive/${version}.tar.gz"
+checksum=0d35c85a121fc550aa3a0fe70f1941f9e347bd90855a2d2208106bbcc19791c3
+
+post_install() {
+	vlicense ../../../COPYING
+}

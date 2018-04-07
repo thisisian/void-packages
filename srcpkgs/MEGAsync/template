@@ -1,8 +1,8 @@
 # Template file for 'MEGAsync'
 pkgname=MEGAsync
-version=3.5.0.0
+version=3.6.0.0
 revision=1
-wrksrc="${pkgname}-${version}_OSX"
+wrksrc="${pkgname}-${version}_Linux"
 build_wrksrc="src"
 build_style=qmake
 configure_args='"CONFIG-=with_tools"'
@@ -12,8 +12,8 @@ short_desc="Automated syncing with MEGA Cloud Drive"
 maintainer="John <johnz@posteo.net>"
 license="custom"
 homepage="https://mega.co.nz"
-distfiles="https://github.com/meganz/MEGAsync/archive/v${version}_OSX.tar.gz"
-checksum=05900226bbefba5c150311a9d07d46d012f0d922d28377c6683a96a9770c9fa3
+distfiles="https://github.com/meganz/MEGAsync/archive/v${version}_Linux.tar.gz"
+checksum=4be2ff9e3c0beb7653e269e14802fc0cf82b58cd78b0dbbae469533635cd8ddc
 restricted=yes
 nocross=yes
 

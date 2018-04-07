@@ -1,7 +1,7 @@
 # Template file for 'bluez'
 pkgname=bluez
-version=5.47
-revision=2
+version=5.49
+revision=1
 build_style=gnu-configure
 configure_args="--with-udevdir=/usr/lib/udev --disable-systemd
  --enable-sixaxis --enable-threads --enable-library"
@@ -13,9 +13,9 @@ system_groups="bluetooth"
 short_desc="Bluetooth tools and daemons"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.bluez.org/"
-license="GPL-2"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
 distfiles="${KERNEL_SITE}/bluetooth/$pkgname-$version.tar.xz"
-checksum=cf75bf7cd5d564f21cc4a2bd01d5c39ce425397335fd47d9bbe43af0a58342c8
+checksum=33301d7a514c73d535ee1f91c2aed1af1f2e53efe11d3ac06bcf0d7abed2ce95
 
 pre_configure() {
 	autoreconf -fi

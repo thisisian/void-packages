@@ -1,6 +1,6 @@
 # Template file for 'gandi-cli'
 pkgname=gandi-cli
-version=1.0
+version=1.2
 revision=1
 wrksrc=gandi.cli-${version}
 noarch=yes
@@ -13,4 +13,4 @@ maintainer="Lon Willett <xgit@lonw.net>"
 license="GPL-3"
 homepage="http://cli.gandi.net"
 distfiles="https://github.com/Gandi/gandi.cli/archive/${version}.tar.gz>${wrksrc}.tar.gz"
-checksum=5b0da1b31cf7414c0c165dcf7e51704f3b4cbe37bbf659f6bdd479bc14922469
+checksum=36af7e3cb5d4735f9d31837cbcc241024558b13de25daec3ede3712230d962a8

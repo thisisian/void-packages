@@ -1,7 +1,7 @@
 # Template file for 'keybase'
 pkgname=keybase
-version=1.0.39
-revision=1
+version=1.0.44
+revision=3
 wrksrc="client-${version}"
 build_style=go
 go_import_path="github.com/keybase/client"
@@ -13,7 +13,7 @@ maintainer="Toyam Cox <Vaelatern@voidlinux.eu>"
 license="BSD"
 homepage="https://keybase.io/"
 distfiles="https://github.com/keybase/client/archive/v${version}.tar.gz"
-checksum=f6835f7cab68eb198aaae6df5584343b33249b69603c9181d2112bb0778908f9
+checksum=505fc74f9aac772705ca3e566700821ab6a86ca3dbffb77be0d8ad234be3cef6
 
 post_install() {
 	vlicense LICENSE

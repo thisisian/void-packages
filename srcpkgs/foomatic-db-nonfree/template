@@ -1,13 +1,21 @@
 # Template file for 'foomatic-db-nonfree'
+# Note: update the version=<date> regularly like once/month.
 pkgname=foomatic-db-nonfree
-version=20171106
+version=20180118
 revision=1
 noarch=yes
+create_wrksrc=yes
 repository="nonfree"
 build_style=gnu-configure
 short_desc="OpenPrinting printer support - nonfree database"
 homepage="https://wiki.linuxfoundation.org/openprinting/database/foomatic"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="nonfree"
-distfiles="https://www.openprinting.org/download/foomatic/$pkgname-$version.tar.gz"
-checksum=0139b50851d742e8baa8b1591febf91ca39591b806818063d53339ab2f7437d6
+
+do_fetch() {
+	$XBPS_FETCH_CMD https://www.openprinting.org/download/foomatic/$pkgname-current.tar.gz
+}
+do_extract() {
+	tar xf ${XBPS_BUILDDIR}/${pkgname}-current.tar.gz \
+		--strip-components=1 -C ${wrksrc}
+}

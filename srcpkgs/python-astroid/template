@@ -1,7 +1,7 @@
 # Template file for 'python-astroid'
 pkgname=python-astroid
-version=1.5.3
-revision=2
+version=1.6.2
+revision=1
 noarch=yes
 wrksrc="astroid-${version}"
 build_style=python-module
@@ -14,7 +14,7 @@ maintainer="Alessio Sergi <al3hex@gmail.com>"
 homepage="https://github.com/PyCQA/astroid"
 license="GPL-2, LGPL-2.1"
 distfiles="${PYPI_SITE}/a/astroid/astroid-${version}.tar.gz"
-checksum=492c2a2044adbf6a84a671b7522e9295ad2f6a7c781b899014308db25312dd35
+checksum=a92c1197dd496ef2470e73e1c296fc02a719907ee07259744e26a13bda9d4862
 
 post_install() {
 	# no tests

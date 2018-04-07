@@ -1,0 +1,32 @@
+# Template file for 'python-peewee'
+pkgname=python-peewee
+version=3.1.7
+revision=1
+noarch=yes
+pycompile_module="peewee"
+wrksrc="peewee-${version}"
+build_style=python-module
+hostmakedepends="python-setuptools python3-setuptools"
+short_desc="Small and simple ORM for Python2"
+maintainer="johannes <johannes.brechtmann@gmail.com>"
+license="MIT"
+homepage="https://github.com/coleifer/peewee"
+distfiles="https://github.com/coleifer/peewee/archive/${version}.tar.gz"
+checksum=2225f909b49bd50a86ea9a6c93ac3eb4ea7e363d349a3149b4c2be8acbea841d
+alternatives="peewee:pwiz:/usr/bin/pwiz.py2"
+
+post_install() {
+	vlicense LICENSE
+}
+
+python3-peewee_package() {
+	alternatives="peewee:pwiz:/usr/bin/pwiz.py3"
+	noarch=yes
+	pycompile_module="peewee"
+	short_desc="${short_desc/Python2/Python3}"
+	pkg_install() {
+		vmove usr/bin/*3
+		vmove usr/lib/python3*
+		vlicense LICENSE
+	}
+}

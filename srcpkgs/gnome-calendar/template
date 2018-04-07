@@ -1,17 +1,18 @@
 # Template file for 'gnome-calendar'
 pkgname=gnome-calendar
-version=3.26.2
+version=3.28.0
 revision=1
 build_style=meson
 hostmakedepends="pkg-config intltool itstool glib-devel $(vopt_if gir gobject-introspection)"
 makedepends="gtk+3-devel gnome-online-accounts-devel evolution-data-server-devel
- libical-devel libpeas-devel gsettings-desktop-schemas-devel"
+ libical-devel libpeas-devel gsettings-desktop-schemas-devel libdazzle-devel
+ libgweather-devel geoclue2-devel"
 short_desc="Calendar application designed to perfectly fit the GNOME desktop"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
 license="GPL-2"
 homepage="https://wiki.gnome.org/Apps/Calendar"
 distfiles="${GNOME_SITE}/${pkgname}/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=19a2c737b9662be926fb68e7dc731d94c523d23fa7a49e435e6a0346770dc50e
+checksum=fae1eb831e3143670b38f2e8ea971d92cf99f038ce8d7848f0b0c8c35f36adf8
 
 build_options="gir"
 if [ -z "$CROSS_BUILD" ]; then

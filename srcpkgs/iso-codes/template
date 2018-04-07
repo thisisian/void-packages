@@ -1,6 +1,6 @@
 # Template file for 'iso-codes'
 pkgname=iso-codes
-version=3.77
+version=3.79
 revision=1
 noarch=yes
 build_style=gnu-configure
@@ -10,4 +10,4 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="LGPL-2.1"
 homepage="http://pkg-isocodes.alioth.debian.org/"
 distfiles="${DEBIAN_SITE}/main/i/iso-codes/${pkgname}_${version}.orig.tar.xz"
-checksum=21cd73a4c6f95d9474ebfcffd4e065223857720f24858e564f4409b19f7f0d90
+checksum=cbafd36cd4c588a254c0a5c42e682190c3784ceaf2a098da4c9c4a0cbc842822

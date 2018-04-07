@@ -2,7 +2,7 @@
 _desc="A network-based backup and restore program"
 
 pkgname=burp2-server
-version=2.1.24
+version=2.1.30
 revision=1
 short_desc="${_desc} - Server"
 maintainer="Pierre Bourgin <pierre.bourgin@free.fr>"
@@ -11,12 +11,13 @@ homepage="http://burp.grke.org/"
 wrksrc="burp-${version}"
 patch_args='-Np1'
 distfiles="https://github.com/grke/burp/archive/${version}.tar.gz"
-checksum=dbd4bc4e26f180d057b416d75a3706510962b995baaf917a082c6df8ed5b9259
+checksum=7f1e7ea74361241f015abee47c1fc8064b4295ee25cae99a6f7ca16f47694b5e
 
 hostmakedepends="automake libtool perl pkg-config"
 makedepends="
  libressl-devel zlib-devel librsync-devel ncurses-devel
  acl-devel uthash yajl-devel"
+checkdepends="check-devel"
 
 # unique binary for both client and server: server depends on client package.
 depends="burp2-client-${version}_${revision}"

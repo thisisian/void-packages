@@ -1,10 +1,10 @@
 # Template file for 'konsole'
 pkgname=konsole
-version=17.12.0
+version=17.12.2
 revision=1
 build_style=cmake
-replaces="konsole5>=0"
-configure_args="-Wno-dev -DKDE4_BUILD_TESTS=OFF -DSYSCONF_INSTALL_DIR=/etc"
+replaces="konsole5>=0 Konsole5>=0"
+configure_args="-DBUILD_TESTING=OFF"
 hostmakedepends="pkg-config extra-cmake-modules kcoreaddons qt5-devel qt5-qmake kdoctools kconfig"
 makedepends="qt5-devel kbookmarks-devel kinit-devel knotifyconfig-devel
  kparts-devel kpty-devel"
@@ -13,8 +13,15 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="GPL-2"
 homepage="http://www.kde.org"
 distfiles="https://download.kde.org/stable/applications/${version}/src/konsole-${version}.tar.xz"
-checksum=adc6e2d36d84f0460db1ee04fa93f5ac5148f5d64acf96de262e712dfdc05f41
+checksum=ece6ea3c07074128bb2a601f49cade8e5d6d3cccc17c58a1052e34c0b1ab7ab5
 
 if [ -n "$CROSS_BUILD" ]; then
 	configure_args+=" -DDESKTOPTOJSON_EXECUTABLE=/usr/bin/desktoptojson"
 fi
+
+konsole5_package() {
+	noarch=yes
+	build_style=meta
+	short_desc="${short_desc} (transitional dummy package)"
+	depends="konsole>=${version}_${revision}"
+}

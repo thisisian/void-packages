@@ -1,6 +1,6 @@
 # Template file for 'ktextwidgets'
 pkgname=ktextwidgets
-version=5.40.0
+version=5.43.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -11,7 +11,7 @@ maintainer="Denis Revin <denis.revin@gmail.com>"
 license="LGPL-2"
 homepage="https://projects.kde.org/projects/frameworks/ktextwidgets"
 distfiles="http://download.kde.org/stable/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=d95412d49025c4c52dafb1056d1d153726126b0cad940841f85ff98dd4b4a236
+checksum=fe21e79b4882726a51c3c42f46dc379a940cb2b5a75ad8c51533d6a482ebab40
 
 ktextwidgets-devel_package() {
 	short_desc+=" - development"

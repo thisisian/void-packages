@@ -1,19 +1,23 @@
 # Template file for 'python-lxml'
 pkgname=python-lxml
-version=4.1.1
+version=4.2.1
 revision=1
 wrksrc="lxml-lxml-${version}"
 build_style=python-module
-hostmakedepends="python-setuptools python3-setuptools
- python-Cython python3-Cython libxslt-devel"
-makedepends="python-devel python3-devel libxslt-devel"
+hostmakedepends="libxslt-devel python-Cython python-setuptools python3-Cython python3-setuptools"
+makedepends="libxslt-devel python-devel python3-devel"
+checkdepends="python3"
 pycompile_module="lxml"
 short_desc="Python2 binding for the libxml2 and libxslt libraries"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://lxml.de/"
-license="3-clause-BSD, ElementTree, GPL-2, ZPL-2.0"
+license="BSD-3-Clause, ElementTree, GPL-2.0-or-later, ZPL-2.0" # ElementTree isn't SPDX
 distfiles="https://github.com/lxml/lxml/archive/lxml-${version}.tar.gz"
-checksum=776608f4bcb97bb3b51578d324922dabc7f5518f22a066ea3c1e5f7cf0deca4b
+checksum=e09b4ae8bdc55bd1983dbacc467ef2da62591faec42e6c8a8864f12c1844028d
+
+do_check() {
+	python3 test.py
+}
 
 post_install() {
 	vlicense LICENSES.txt LICENSES

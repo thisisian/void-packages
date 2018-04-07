@@ -1,13 +1,13 @@
 # Template file for 'e2fsprogs'
 pkgname=e2fsprogs
-version=1.43.7
+version=1.44.1
 revision=1
 short_desc="Ext2/3/4 Filesystem Utilities"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="GPL-2, LGPL-2.1"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="http://e2fsprogs.sourceforge.net/"
 distfiles="${KERNEL_SITE}/kernel/people/tytso/e2fsprogs/v${version}/e2fsprogs-${version}.tar.xz"
-checksum=2a6367289047d68d9ba6a46cf89ab9a1efd0556cde02a51ebaf414ff51edded9
+checksum=0ca164c1c87724df904c918b2d7051ef989b51de725db66c67514dbe6dd2b9ef
 
 build_style=gnu-configure
 configure_args="--enable-elf-shlibs --disable-fsck

@@ -1,14 +1,14 @@
 # Template file for 'tokei'
 pkgname=tokei
-version=6.1.2
+version=7.0.1
 revision=1
-hostmakedepends="cargo rust"
+hostmakedepends="cargo"
 short_desc="Count lines of code"
 maintainer="Joseph LaFreniere <joseph@lafreniere.xyz>"
 license="Apache, MIT"
 homepage="https://github.com/Aaronepower/tokei"
 distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=736bab89800c397acc3be961af12b80acc2ca71dc990792fff8935018a2f0698
+checksum=71c9be9ad04bc66501f5f54e74b5cf5e56fc1392ceead5525b743006145ac3a9
 nocross=yes
 
 do_build() {

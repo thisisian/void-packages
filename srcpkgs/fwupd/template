@@ -1,0 +1,48 @@
+# Template file for 'fwupd'
+pkgname=fwupd
+version=1.0.6
+revision=1
+build_style=meson
+# manpages fail to build
+# tests require unpackaged umockdev
+configure_args="
+ -Dbootdir=/boot/EFI
+ -Dconsolekit=false
+ -Dgtkdoc=false
+ -Dintrospection=false
+ -Dsystemd=false
+ -Dplugin_altos=false
+ -Dtests=false
+ -Dman=false"
+conf_files="
+ /etc/dbus-1/system.d/org.freedesktop.fwupd.conf
+ /etc/fwupd/daemon.conf
+ /etc/fwupd/remotes.d/fwupd.conf
+ /etc/fwupd/remotes.d/lvfs-testing.conf
+ /etc/fwupd/remotes.d/lvfs.conf
+ /etc/fwupd/remotes.d/vendor.conf"
+hostmakedepends="dejavu-fonts-ttf gnutls-tools help2man pkg-config"
+makedepends="appstream-glib-devel cairo-devel colord-devel fwupdate-devel
+ gnutls-devel gpgme-devel json-glib-devel libgusb-devel libsoup-devel
+ polkit-devel python3-Pillow python3-gobject"
+short_desc="A daemon to allow session software to update firmware"
+maintainer="maxice8 <thinkabit.ukim@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/hughsie/fwupd"
+distfiles="https://github.com/hughsie/fwupd/archive/${version}.tar.gz"
+checksum=437017baf58a1aab3e63fd28264c05ab3ca1eaebc6295f959ae42338490d2223
+
+case "$XBPS_TARGET_MACHINE" in
+	x86_64|i686) makedepends+=" libsmbios-devel" ;;
+	*-musl)	configure_args+=" -Dplugin_dell=false" ;;
+esac
+
+fwupd-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision} libglib-devel"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}

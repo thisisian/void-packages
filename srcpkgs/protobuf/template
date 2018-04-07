@@ -1,6 +1,6 @@
 # Template file for 'protobuf'
 pkgname=protobuf
-version=3.4.0
+version=3.5.2
 revision=1
 build_style=gnu-configure
 hostmakedepends="automake libtool pkg-config"
@@ -9,8 +9,8 @@ short_desc="Google's data interchange format"
 maintainer="Michael Aldridge <maldridge@voidlinux.eu>"
 distfiles="https://github.com/google/protobuf/archive/v${version}.tar.gz"
 homepage="https://developers.google.com/protocol-buffers/"
-license="BSD"
-checksum=f6600abeee3babfa18591961a0ff21e7db6a6d9ef82418a261ec4fee44ee6d44
+license="BSD-3-Clause"
+checksum=4ffd420f39f226e96aebc3554f9c66a912f6cad6261f39f194f16af8a1f6dab2
 
 CXXFLAGS="-std=c++14"
 

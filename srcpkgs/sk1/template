@@ -1,17 +1,19 @@
 # Template file for 'sk1'
 pkgname=sk1
-version=2.0rc2
+version=2.0rc3.20180329
 revision=1
+wrksrc="sk1-${version%.*}"
 build_style=python2-module
-hostmakedepends="pkg-config"
+hostmakedepends="pkg-config python"
 makedepends="libmagick-devel pango-devel python-cairo-devel wxPython-devel"
-depends="desktop-file-utils python-cairo python-Pillow python-reportlab wxPython"
+depends="desktop-file-utils hicolor-icon-theme python-cairo python-Pillow
+ python-reportlab wxPython"
 short_desc="Open source multiplatform vector graphics editor"
 maintainer="cr6git <quark6@protonmail.com>"
 license="GPL-3"
 homepage="https://sk1project.net"
-distfiles="http://downloads.sk1project.net/sk1/${version}/sk1-${version}.tar.gz"
-checksum=ee1f03e6705e2063d0a1f032e475b24868c68fc26410fb1f2a536d3541b88a67
+distfiles="https://downloads.sk1project.net/sk1/nightbuilds/sk1-${version/.2/_2}.tar.gz"
+checksum=db0af97d9ad83c19b4d126b2cb38329c3d1a20e6b538a4f90d38f0d00648b82f
 
 pre_configure() {
 	# python2: can't open file 'setup.py': [Errno 2] No such file or directory

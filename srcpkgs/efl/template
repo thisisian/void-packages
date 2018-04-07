@@ -1,7 +1,7 @@
 # Template file for 'efl'
 pkgname=efl
-version=1.20.6
-revision=1
+version=1.20.7
+revision=2
 build_style=gnu-configure
 configure_args="CXX= --enable-multisense --enable-image-loader-webp --enable-liblz4
  --disable-systemd $(vopt_enable framebuffer fb) $(vopt_enable pulseaudio)
@@ -16,9 +16,9 @@ makedepends="lz4-devel libressl-devel glib-devel libjpeg-turbo-devel fontconfig-
 homepage="http://enlightenment.org"
 short_desc="Enlightenment Foundation Libraries"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
-license="BSD"
+license="LGPL-2.1, BSD"
 distfiles="http://download.enlightenment.org/rel/libs/efl/efl-${version}.tar.xz"
-checksum=56c67ea77435753a4f324a0a13488ba58f4ed7eb35a97c1a354fdc79c39a32c1
+checksum=b0a9b765bcd7b012f1072da1d491fc8671aa089473f746901d93f5807a2c76fe
 
 if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+="  automake gettext-devel libtool efl-devel"
@@ -78,10 +78,16 @@ if [ "$build_option_x11" ]; then
 	makedepends+=" libXrandr-devel libXScrnSaver-devel"
 	makedepends+=" libXdamage-devel libXrender-devel libXi-devel libXinerama-devel"
 	makedepends+=" xcb-util-devel xcb-util-keysyms-devel xcb-util-image-devel"
-	makedepends+=" xcb-util-renderutil-devel xcb-util-wm-devel printproto"
+	makedepends+=" xcb-util-renderutil-devel xcb-util-wm-devel xorgproto"
 else
 	configure_args+=" --without-x --with-x11=none"
 fi
+
+post_install() {
+	for lc in licenses/* ; do
+		vlicense "$lc"
+	done
+}
 
 efl-devel_package() {
 	short_desc+=" - development files"

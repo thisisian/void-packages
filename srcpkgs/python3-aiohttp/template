@@ -1,22 +1,23 @@
 # Template file for 'python3-aiohttp'
 pkgname=python3-aiohttp
-version=2.3.7
+version=3.1.1
 revision=1
 wrksrc="aiohttp-${version}"
 build_style=python3-module
 pycompile_module="aiohttp"
-hostmakedepends="python3-setuptools python3-Cython"
+hostmakedepends="python3-Cython python3-setuptools"
 makedepends="python3-devel"
-checkdepends="python3-async-timeout python3-chardet python3-yarl python3-pytest
-python3-multidict python3-pytest-mock"
-depends="python3-async-timeout python3-chardet python3-yarl"
+checkdepends="python3-async-timeout python3-chardet python3-idna-ssl
+ python3-pytest-mock python3-yarl python3-async_generator"
+depends="python3-async-timeout python3-chardet python3-idna-ssl python3-yarl
+ python3-attrs"
 short_desc="HTTP client/server for asyncio (PEP-3156)"
 maintainer="Michael Aldridge <maldridge@VoidLinux.eu>"
 license="Apache-2.0"
 homepage="https://aiohttp.readthedocs.io/"
 distfiles="https://github.com/aio-libs/aiohttp/archive/v${version}.tar.gz"
-checksum=8e8a1fd47accc7164636dcfa45348d224b5963fbfc18c81416204a4c1e67916b
+checksum=3586e2cb1772bd867770214db62a0e86433a8f7a520fb385af519dc1bafebb07
 
 do_check() {
-	PYTHONPATH="${PWD}/build/lib.linux-${XBPS_TARGET_MACHINE}-3.6" python3 -m pytest
+	python3 setup.py test
 }

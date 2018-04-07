@@ -1,6 +1,6 @@
 # Template file for 'python-jupyter_client'
 pkgname=python-jupyter_client
-version=5.2.0
+version=5.2.3
 revision=1
 noarch=yes
 wrksrc="jupyter_client-${version}"
@@ -8,13 +8,13 @@ build_style=python-module
 pycompile_module="jupyter_client"
 hostmakedepends="python-setuptools python3-setuptools"
 depends="python-setuptools python-traitlets python-jupyter_core
- python-pyzmq python-dateutil"
+ python-pyzmq python-dateutil python-tornado"
 short_desc="Jupyter protocol client APIs (Python2)"
 maintainer="Alessio Sergi <al3hex@gmail.com>"
 homepage="https://github.com/jupyter/jupyter_client"
-license="3-clause-BSD"
+license="BSD-3-Clause"
 distfiles="${PYPI_SITE}/j/jupyter_client/jupyter_client-${version}.tar.gz"
-checksum=ca30cf1786047925ebacd6f6faa3a993efaa004b584f7d83bc8b807f7cd3f6bb
+checksum=27befcf0446b01e29853014d6a902dd101ad7d7f94e2252b1adca17c3466b761
 alternatives="
  jupyter-client:jupyter-kernel:/usr/bin/jupyter-kernel2
  jupyter-client:jupyter-kernelspec:/usr/bin/jupyter-kernelspec2
@@ -29,7 +29,7 @@ python3-jupyter_client_package() {
 	pycompile_module="jupyter_client"
 	short_desc="${short_desc/Python2/Python3}"
 	depends="python3-setuptools python3-traitlets python3-jupyter_core
-	 python3-pyzmq python3-dateutil"
+	 python3-pyzmq python3-dateutil python3-tornado"
 	alternatives="
 	 jupyter-client:jupyter-kernel:/usr/bin/jupyter-kernel3
 	 jupyter-client:jupyter-kernelspec:/usr/bin/jupyter-kernelspec3

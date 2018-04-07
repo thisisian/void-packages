@@ -1,17 +1,17 @@
 # Template file for 'inxi'
 pkgname=inxi
-version=2.3.53
+version=2.9.01
 revision=1
-_gitrev=cdfef8f65a0cd004542a31fd123335b398c56f72
+_gitrev=0e68648ae4952402750ab5a630423f23cb8d217a
 wrksrc=${pkgname}-${_gitrev}
 noarch=yes
-depends="file glxinfo pciutils usbutils xdpyinfo xprop xrandr dmidecode"
+depends="perl file glxinfo pciutils usbutils xdpyinfo xprop xrandr dmidecode"
 short_desc="Full featured system information script"
 maintainer='Juan RP <xtraeme@voidlinux.eu>'
 license="GPL-3"
 homepage="https://smxi.org/docs/inxi.htm"
 distfiles="https://github.com/smxi/inxi/archive/${_gitrev}.tar.gz"
-checksum=c1963057b5831a6471a84318b2033ad29ba05119ab8196cac661f567d429e0c7
+checksum=624e2c8000c9fcf1bc6b592e0b11d298b2681c8630fa847657abe3daf187b960
 
 do_install() {
 	vbin inxi

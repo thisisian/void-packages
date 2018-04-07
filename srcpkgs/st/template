@@ -1,28 +1,36 @@
 # Template file for 'st'
 pkgname=st
-version=0.7
-revision=2
+version=0.8.1
+revision=1
 build_style=gnu-makefile
 make_use_env=compliant
 hostmakedepends="pkg-config"
 makedepends="fontconfig-devel libX11-devel libXft-devel"
-depends="ncurses"
+depends="ncurses st-terminfo-${version}_${revision}"
 short_desc="Simple terminal implementation for X"
 maintainer='Juan RP <xtraeme@voidlinux.eu>'
 license="MIT"
 homepage="https://st.suckless.org"
 distfiles="https://dl.suckless.org/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000
+checksum=c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926
 
 pre_build() {
         patch -p1 < "${FILESDIR}/scrollback.diff"
 	cp ${FILESDIR}/config.h config.h
 	# We will use tic after install. See INSTALL.
-	sed -i 's|@tic -s st.info||g' Makefile
+	sed -i '/tic/d' Makefile
 }
 
 post_install() {
 	vinstall st.info 644 usr/share/terminfo/s st.terminfo
 	vdoc README
 	vlicense LICENSE
+}
+
+st-terminfo_package() {
+	short_desc+=" - terminfo data"
+	noarch=yes
+	pkg_install() {
+		vmove usr/share/terminfo
+	}
 }

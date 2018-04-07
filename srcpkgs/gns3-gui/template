@@ -1,6 +1,6 @@
 # Template file for 'gns3-gui'
 pkgname=gns3-gui
-version=2.1.0
+version=2.1.4
 revision=1
 noarch=yes
 build_style=python3-module
@@ -10,10 +10,10 @@ depends="python3-setuptools python3-psutil python3-jsonschema python3-raven
  python3-PyQt5-svg xterm inetutils-telnet gns3-net-converter"
 short_desc="Graphical Network Simulator 3 - GUI"
 maintainer="Michael Aldridge <maldridge@VoidLinux.eu>"
-license="GPL-3"
+license="GPL-3.0-or-later"
 homepage="https://gns3.com"
 distfiles="https://github.com/GNS3/${pkgname}/archive/v${version}.tar.gz"
-checksum=ee0bc28dba146dd1aa9258e076b310014acbc461ea4e7324f1336eade6fa10f4
+checksum=da2517881307c86229693bfc01e3dd98cfa67fd91f5403f4a7ab7b6619b6efe0
 
 post_install() {
 	vinstall gns3-gui.desktop 644 usr/share/applications

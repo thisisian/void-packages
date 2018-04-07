@@ -1,6 +1,6 @@
 # Template file for 'libdill'
 pkgname=libdill
-version=1.6
+version=2.7
 revision=1
 build_style=gnu-configure
 hostmakedepends="automake libtool"
@@ -9,12 +9,17 @@ maintainer="Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>"
 license="MIT"
 homepage="http://libdill.org/"
 distfiles="https://github.com/sustrik/libdill/archive/${version}.tar.gz"
-checksum=2539d3440971c876b117bc87295b0caabc8c8ec5f544856ca9e74ed12705ea51
+checksum=b78353308cbbcd442f9c3feab86afeac1bf79eb27186bad9f75efc07c4bfedbf
+
+case "$XBPS_TARGET_MACHINE" in
+	i686*) broken="https://build.voidlinux.eu/builders/i686_builder/builds/7735/steps/shell_3/logs/stdio" ;;
+esac
 
 pre_configure() {
 	export CFLAGS="${CFLAGS/-D_FORTIFY_SOURCE=?/}"
 	autoreconf -fi
 }
+
 post_install() {
 	vlicense COPYING
 }
@@ -25,7 +30,8 @@ libdill-devel_package() {
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/pkgconfig
-		vmove usr/lib/*.a
-		vmove usr/lib/*.so
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove "usr/share/man/man3/*.3"
 	}
 }

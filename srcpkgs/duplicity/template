@@ -1,25 +1,26 @@
 # Template file for 'duplicity'
 pkgname=duplicity
-version=0.7.15
+version=0.7.17
 revision=1
 build_style=python2-module
 hostmakedepends="python-setuptools"
 makedepends="python-devel librsync-devel"
 checkdepends="python-pexpect python-mock python-fasteners gnupg par2cmdline"
-depends="python-fasteners"
+depends="python-fasteners python-b2"
 pycompile_module="duplicity"
 short_desc="Encrypted bandwidth-efficient backup using the rsync algorithm"
 homepage="http://duplicity.nongnu.org/"
+_changelog="http://duplicity.nongnu.org/CHANGELOG"
 license="GPL-2"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 distfiles="http://code.launchpad.net/duplicity/${version%.*}-series/${version}/+download/duplicity-${version}.tar.gz"
-checksum=50bf7d14413284ecb036146ab9ba0e271937f2fa7826f8c8300b2965eb450a6c
+checksum=3724c5f1f839e584e49154ee0ff137e6f3450eedbd7f3886f31d2093001cb04a
 
 post_extract() {
 	chmod 0644 bin/*.1
 }
 do_check() {
-	PYTHONPATH="${PWD}/build/lib.linux-${XBPS_TARGET_MACHINE}-2.7" python2 setup.py test
+	python2 setup.py test
 }
 post_install() {
 	# drop doc

@@ -1,33 +1,34 @@
 # Template file for 'libgweather'
 pkgname=libgweather
-version=3.26.1
+version=3.28.1
 revision=1
-build_style=gnu-configure
+build_style=meson
 build_options="gir"
-configure_args="$(vopt_if gir '--enable-introspection --enable-vala' '--disable-introspection --disable-vala')
- --disable-schemas-compile --enable-locations-compression --with-zoneinfo-dir=/usr/share/zoneinfo"
-hostmakedepends="pkg-config intltool glib-devel $(vopt_if gir 'gobject-introspection vala-devel')"
-makedepends="libxml2-devel libsoup-gnome-devel gtk+3-devel geocode-glib-devel"
+configure_args="-Denable_vala=$(vopt_if gir true false)
+ -Dzoneinfo_dir=/usr/share/zoneinfo"
+hostmakedepends="glib-devel gobject-introspection intltool pkg-config
+ $(vopt_if gir vala-devel)"
+makedepends="geocode-glib-devel gtk+3-devel libsoup-gnome-devel"
 checkdepends="tzdata"
 short_desc="GNOME Weather information access library"
 maintainer="Enno Boland <gottox@voidlinux.eu>"
-license="LGPL-2.1"
+license="LGPL-2.1-or-later"
 homepage="http://www.gnome.org/"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*}/$pkgname-$version.tar.xz"
-checksum=fca78470b345bce948e0333cab0a7c52c32562fc4a75de37061248a64e8fc4b8
+checksum=157a8388532a751b36befff424b11ed913b2c43689b62cd2060f6847eb730be3
+nocross="requires gobject-introspection"
 
 if [ -z "$CROSS_BUILD" ]; then
 	build_options_default="gir"
 fi
 
 libgweather-devel_package() {
-	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision} gtk+3-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/pkgconfig
 		vmove "usr/lib/*.so"
-		vmove usr/share/gtk-doc
 		if [ "$build_option_gir" ]; then
 			vmove usr/share/gir-1.0
 			vmove usr/share/vala

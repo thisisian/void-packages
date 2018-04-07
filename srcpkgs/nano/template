@@ -1,15 +1,15 @@
 # Template file for 'nano'
 pkgname=nano
-version=2.9.1
+version=2.9.5
 revision=1
 build_style=gnu-configure
-makedepends="file-devel zlib-devel ncurses-devel"
+makedepends="file-devel ncurses-devel"
 short_desc="The GNU nano text editor"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="https://www.nano-editor.org/"
-license="GPL-3"
+license="GPL-3.0-or-later"
 distfiles="https://www.nano-editor.org/dist/v${version%.*}/nano-$version.tar.xz"
-checksum=6316d52d0d26af3e79a13dcb4db1c7a4aeac61b37fd9381e801a4189a2ecba7c
+checksum=7b8d181cb57f42fa86a380bb9ad46abab859b60383607f731b65a9077f4b4e19
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl) CFLAGS="-DREG_STARTEND=0";;

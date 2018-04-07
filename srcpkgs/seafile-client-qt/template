@@ -1,22 +1,27 @@
 # Template file for 'seafile-client-qt'
 pkgname=seafile-client-qt
-version=6.1.3
+version=6.1.6
 revision=1
 _sourcename="seafile-client"
 wrksrc="${_sourcename}-${version}"
 build_style=cmake
-configure_args="-DUSE_QT5=ON"
+configure_args="$(vopt_if shibboleth -DBUILD_SHIBBOLETH_SUPPORT=ON)"
 hostmakedepends="pkg-config"
 makedepends="sqlite-devel jansson-devel ccnet-devel libsearpc-devel
 	libressl-devel seafile-libclient-devel libevent-devel libuuid-devel
-	qt5-devel qt5-tools-devel desktop-file-utils"
+	qt5-devel qt5-tools-devel desktop-file-utils
+	$(vopt_if shibboleth 'qt5-webengine-devel qt5-declarative-devel qt5-webchannel-devel qt5-location-devel')"
 
 short_desc="Cloud storage system - Qt graphical client"
 maintainer="yopito <pierre.bourgin@free.fr>"
-license="ASL-2"
+license="Apache-2.0"
 homepage="https://github.com/haiwen/${_sourcename}"
 distfiles="https://github.com/haiwen/${_sourcename}/archive/v${version}.tar.gz>${pkgname}-${version}.tar.gz"
-checksum=63a124d7e27881bb30304c7a66dab87fddf8634462dc5741102a561dd4c38689
+checksum=15a5143e1ac852983b1fc5fea50ba7a829ace74f217c8898d95db8fd19d4c92c
+
+build_options="shibboleth"
+desc_option_shibboleth="Build with Shibboleth support"
+build_options_default="shibboleth"
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl)	# Add musl-fts implementation
@@ -40,5 +45,5 @@ pre_configure() {
 }
 
 post_install() {
-	vdoc "README.md"
+	vdoc README.md
 }

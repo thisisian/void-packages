@@ -1,6 +1,6 @@
 # Template file for 'sysdig'
 pkgname=sysdig
-version=0.19.1
+version=0.21.0
 revision=1
 build_style=cmake
 configure_args="-DSYSDIG_VERSION=${version} -DUSE_BUNDLED_DEPS=OFF
@@ -17,7 +17,7 @@ license="GPL-2"
 homepage="http://www.sysdig.org/"
 _changelog="https://github.com/draios/sysdig/releases"
 distfiles="https://github.com/draios/${pkgname}/archive/${version}.tar.gz"
-checksum=480d5d8fd7e7373c08008c30bd8e2c7595d5c45d710bf07bd15a522021b560f6
+checksum=3ba35ca1e84dd4487bdeff078ff0e48c862fa6887688f9c8d4a076865c6f9a05
 nocross=yes
 disable_parallel_build=yes
 only_for_archs="i686 x86_64"

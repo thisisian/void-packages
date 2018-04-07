@@ -1,25 +1,25 @@
 # Template file for 'praat'
 pkgname=praat
-version=6.0.36
+version=6.0.38
 revision=1
 hostmakedepends="pkg-config"
 makedepends="gtk+-devel alsa-lib-devel $(vopt_if pulseaudio pulseaudio-devel)"
 short_desc="Speech analysis, synthesis, and manipulation"
 maintainer="newbluemoon <blaumolch@mailbox.org>"
-license="GPL-2"
+license="GPL-2.0-or-later"
 homepage="http://www.praat.org/"
 distfiles="https://github.com/praat/${pkgname}/archive/v${version}.tar.gz"
-checksum=1829eedf0c03780ce29c2b1a778b4065ff19d3959dbe919b25e721206f113c52
+checksum=0cc2cf1fe044813c0718d3e727c220fc325372f3aaa297bdadc64dd060ab01d0
 
 build_options="pulseaudio"
 
 do_build() {
 	mkdir /tmp/original
-	mv * /tmp/original
+	mv * /tmp/original/
 	mv /tmp/original .
 
 	for _variant in $(vopt_if pulseaudio pulse alsa) nogui; do
-		cp -rp original $_variant
+		cp -a original $_variant
 		cd $_variant
 
 		cp makefiles/makefile.defs.linux.${_variant} ./makefile.defs

@@ -20,6 +20,8 @@ SET(CMAKE_FIND_ROOT_PATH  ${XBPS_CROSS_BASE})
 SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+SET(wxWidgets_CONFIG_EXECUTABLE ${XBPS_WRAPPERDIR}/wx-config)
 _EOF
 		cmake_args+=" -DCMAKE_TOOLCHAIN_FILE=cross_${XBPS_CROSS_TRIPLET}.cmake"
 	fi
@@ -48,6 +50,8 @@ do_build() {
 }
 
 do_check() {
+	cd ${cmake_builddir:=build}
+
 	if [ -z "$make_cmd" ] && [ -z "$make_check_target" ]; then
 		if make -q test 2>/dev/null; then
 			:

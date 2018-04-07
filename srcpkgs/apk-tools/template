@@ -1,17 +1,17 @@
 # Template file for 'apk-tools'
 pkgname=apk-tools
-version=2.8.1
-revision=1
+version=2.9.1
+revision=2
 build_style=gnu-makefile
 make_build_args="LUAAPK="
 hostmakedepends="pkg-config"
-makedepends="libressl-devel zlib-devel"
+makedepends="libressl-devel zlib-devel lua52-devel"
 short_desc="Alpine Package Keeper (Alpine package manager)"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2"
 homepage="http://git.alpinelinux.org/cgit/apk-tools"
 distfiles="http://git.alpinelinux.org/cgit/${pkgname}/snapshot/${pkgname}-${version}.tar.bz2"
-checksum=8ea7262802cc3cc8d7ff31244acb556593bc92b08ff592b8f193698eb369a273
+checksum=24fd166d2bec2f38af32e7ce4c464c8987273094d7a652e463594b1b803ff16e
 CFLAGS=-Wno-error
 
 do_install() {

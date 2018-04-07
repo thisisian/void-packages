@@ -1,19 +1,18 @@
 # Template file for 'xfce4-settings'
 pkgname=xfce4-settings
-version=4.12.1
+version=4.12.3
 revision=1
 build_style=gnu-configure
 configure_args="--enable-sound-settings --enable-pluggable-dialogs"
-hostmakedepends="pkg-config intltool"
-makedepends="libxfce4ui-devel libXi-devel libXcursor-devel
- exo-devel libXrandr-devel libxklavier-devel libnotify-devel dbus-devel
- libcanberra-devel garcon-devel upower0-devel"
+hostmakedepends="intltool pkg-config"
+makedepends="exo-devel garcon-devel libcanberra-devel libnotify-devel
+ libxklavier-devel upower-devel"
 depends="desktop-file-utils gnome-icon-theme"
 conf_files="/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml"
 short_desc="Xfce settings manager"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://www.xfce.org/"
-license="GPL-2"
+license="GPL-2.0-only"
 homepage="http://xfce.org"
 distfiles="http://archive.xfce.org/src/xfce/$pkgname/${version%.*}/$pkgname-$version.tar.bz2"
-checksum=f6484a0b1a7dad65ba5ee4eba8e07299b7c92a2a8adb195684e0e2b959886574
+checksum=0869a9fb29ff51e8225320ed3c621d922f1e4a99a325a3a35c3b2d7bee700ba2

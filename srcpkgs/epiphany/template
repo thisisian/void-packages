@@ -1,6 +1,6 @@
 # Template file for 'epiphany'
 pkgname=epiphany
-version=3.26.5.1
+version=3.28.0.1
 revision=1
 build_style=meson
 configure_args="-Ddistributor_name=VoidLinux -Dunit_tests=false"
@@ -18,4 +18,4 @@ maintainer="Enno Boland <gottox@voidlinux.eu>"
 homepage="http://www.gnome.org/projects/epiphany/"
 license="GPL-2"
 distfiles="${GNOME_SITE}/$pkgname/${version%.*.*}/$pkgname-$version.tar.xz"
-checksum=4b2f1c48e6f50793ff205d9215add5596ab5c7ebf4cef76907868fcd5a029221
+checksum=7154b06837655771f2240bf378fb8ba2315ae07dbc6f45d160ca29cd6d377808

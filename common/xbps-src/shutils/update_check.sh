@@ -48,10 +48,14 @@ update_check() {
                 githubname="$(printf %s "$url" | cut -d/ -f4,5)"
                 url="https://github.com/$githubname/tags"
                 rx='/archive/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar\.gz")';;
+            *gitlab.com*)
+                gitlabname="$(printf %s "$url" | cut -d/ -f4,5)"
+                url="https://gitlab.com/$gitlabname/tags"
+                rx='href="/\Q'$gitlabname'\E/repository/[^\d\.]*\K[\d\.]+(?=/archive\.tar\.gz")';;
             *bitbucket.org*)
                 bbname="$(printf %s "$url" | cut -d/ -f4,5)"
                 url="https://bitbucket.org/$bbname/downloads"
-                rx='/(get|downloads)/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar\.gz")';;
+                rx='/(get|downloads)/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar)';;
             *ftp.gnome.org*)
                 : ${pattern="\Q$pkgname\E-\K[0-9]\.[0-9]*[02468]\.[0-9.]*[0-9](?=)"}
                 url="http://ftp.gnome.org/pub/GNOME/sources/$pkgname/cache.json";;

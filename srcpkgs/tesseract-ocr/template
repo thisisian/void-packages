@@ -1,14 +1,13 @@
 # Template file for 'tesseract-ocr'
 pkgname=tesseract-ocr
 version=3.05.01
-revision=2
+revision=5
 wrksrc=tesseract-${version}
-_tessdata_ver=8bf2e7ad08db9ca174ae2b0b3a7498c9f1f71d40
+_tessdata_ver=3cf1e2df1fe1d1da29295c9ef0983796c7958b7d
 build_style=gnu-configure
 configure_args="LIBLEPT_HEADERSDIR=${XBPS_CROSS_BASE}/usr/include"
 hostmakedepends="automake libtool pkg-config leptonica"
 makedepends="cairo-devel pango-devel leptonica-devel icu-devel"
-depends="tesseract-ocr-osd tesseract-ocr-equ"
 short_desc="Tesseract Open Source OCR engine"
 maintainer="Jürgen Buchmüller <pullmoll@t-online.de>"
 license="Apache-2.0"
@@ -18,7 +17,7 @@ distfiles="
  https://github.com/tesseract-ocr/tessdata/archive/${_tessdata_ver}.tar.gz>tessdata-${_tessdata_ver}.tar.gz"
 checksum="
  05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1
- fd5cfdcada2a83aea8c855fbf916e1b34882659f796c10449c78d1385264d5a2"
+ 94c5957a6837e0bca86ab1f33a3c7c7ff2451f927f3daf458cca926a11f2c3f0"
 
 # Create a package for one specific language $1
 pkg_lang() {
@@ -41,6 +40,7 @@ post_build() {
 	make ${makejobs} training
 }
 post_install() {
+	local lang
 	# Rename binary to avoid conflict with tesseract package
 	mv ${DESTDIR}/usr/bin/tesseract{,-ocr}
 	mv ${DESTDIR}/usr/share/man/man1/tesseract{,-ocr}.1
@@ -49,6 +49,11 @@ post_install() {
 	vdoc testing/eurotext.tif
 	vdoc testing/phototest.tif
 	vlicense tessdata/COPYING LICENSE-tessdata
+	# Move the pseudo languges "equ" (math / equation detection) and
+	# "osd" (orientation and script detection) to the main package
+	for lang in equ osd; do
+		$(pkg_lang ${lang})
+	done
 }
 tesseract-ocr-tools_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
@@ -107,7 +112,7 @@ tesseract-ocr-all_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	conflicts="tesseract-ocr-basic>=0"
 	short_desc+=" - all languages data"
-	# All aVailable languages
+	# All available languages
 	for lang in afr amh ara asm aze aze_cyrl bel ben bod bos bul cat ceb \
 		ces chi_sim chi_tra chr cym dan deu dzo ell eng enm epo est eus \
 		fas fin fra frk frm gle glg grc guj hat heb hin hrv hun iku ind isl ita \
@@ -314,14 +319,6 @@ tesseract-ocr-epo_package() {
 	noarch=yes
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - Esperanto language data"
-	pkg_install() {
-		$(pkg_lang ${pkgname#tesseract-ocr-})
-	}
-}
-tesseract-ocr-equ_package() {
-	noarch=yes
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - Math / equation detection module"
 	pkg_install() {
 		$(pkg_lang ${pkgname#tesseract-ocr-})
 	}
@@ -682,14 +679,6 @@ tesseract-ocr-ori_package() {
 	noarch=yes
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - Oriya language data"
-	pkg_install() {
-		$(pkg_lang ${pkgname#tesseract-ocr-})
-	}
-}
-tesseract-ocr-osd_package() {
-	noarch=yes
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - Orientation and script detection module"
 	pkg_install() {
 		$(pkg_lang ${pkgname#tesseract-ocr-})
 	}

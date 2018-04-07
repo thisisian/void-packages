@@ -1,6 +1,6 @@
 # Template file for 'freetds'
 pkgname=freetds
-version=1.00.80
+version=1.00.83
 revision=1
 build_style=gnu-configure
 configure_args="--sysconfdir=/etc/$pkgname"
@@ -9,10 +9,10 @@ makedepends="readline-devel"
 conf_files="/etc/$pkgname/freetds.conf /etc/$pkgname/locales.conf /etc/$pkgname/pool.conf"
 short_desc="An implementation of the Tabular DataStream protocol"
 maintainer="Diogo Leal <diogo@diogoleal.com>"
-license="LGPL-3"
+license="LGPL-2.0-or-later"
 homepage="http://www.freetds.org/"
 distfiles="ftp://ftp.freetds.org/pub/freetds/stable/${pkgname}-${version}.tar.gz"
-checksum=c5721eeed39372edd4831daf2e309a859f5682a27df8ae8e7dd71da666807497
+checksum=e587645e82db39aa9519d8003eff980fcea0526bdecc59953f076180c5bd9b09
 
 freetds-devel_package() {
 	short_desc+=" - development files"

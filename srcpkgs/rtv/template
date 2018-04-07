@@ -1,6 +1,6 @@
 # Template file for 'rtv'
 pkgname=rtv
-version=1.20.0
+version=1.22.1
 revision=1
 noarch=yes
 build_style=python3-module
@@ -12,7 +12,7 @@ maintainer="dleeram <dleeram@protonmail.com>"
 license="MIT"
 homepage="https://github.com/michael-lazar/${pkgname}"
 distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=a13ab27e3b5bfb2f3f755315dcf2d2d07dd369d1fc3e01bbee2d91e42c89b2ab
+checksum=77c9bbd0e8cd85b6c2daad7b6674d1865f06bfde0a5c2557e12ef1dc1acb2789
 
 post_install() {
 	vlicense LICENSE

@@ -1,6 +1,6 @@
 # Template file for 'kwayland'
 pkgname=kwayland
-version=5.40.0
+version=5.43.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -11,7 +11,7 @@ maintainer="Juan RP <xtraeme@voidlinux.eu>"
 license="LGPL-2.1"
 homepage="https://projects.kde.org/projects/frameworks/kwayland"
 distfiles="http://download.kde.org/stable/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=2d4ede706e73c1ec7935595b983c7c9ad52d3c794b5eb0b60d17a056886ba403
+checksum=51aa27792577a52d3c09fa5f08e4d057827cd569dc836839f3528eb2ed4a973e
 
 kwayland-devel_package() {
 	short_desc+=" - development"

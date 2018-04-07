@@ -1,17 +1,31 @@
 # Template file for 'gopass'
 pkgname=gopass
-version=1.6.6
-revision=1
+version=1.6.11
+revision=2
 build_style=go
 go_import_path="github.com/justwatchcom/gopass"
 depends="gnupg2 git"
+makedepends="gnupg2"
 short_desc="The slightly more awesome standard unix password manager for teams"
 maintainer="Dominic Monroe <monroef4@googlemail.com>"
 license="MIT"
 homepage="https://www.justwatch.com/gopass/"
 distfiles="https://github.com/justwatchcom/gopass/archive/v${version}.tar.gz"
-checksum=37b3a410b3376753a98ad0f9e0e0443e2bf4d4643e068706d507d616224a07ec
+checksum=2199532b6a5f51960e6b3412ea196efb5e2d187b7cb436ecbbcff1a0ec4f9fc1
+nocross=yes
+
+post_build() {
+	local GOPASS=${GOPATH}/bin/gopass
+	local completions=(zsh bash fish)
+
+	for completion in "${completions[@]}"; do
+		$GOPASS completion $completion > ${completion}.completion;
+	done
+}
 
 post_install() {
+	install -Dm0755 zsh.completion ${DESTDIR}/usr/share/zsh/site-functions/_gopass
+	install -Dm0755 bash.completion ${DESTDIR}/usr/share/bash-completion/completions/gopass
+	install -Dm0755 fish.completion ${DESTDIR}/usr/share/fish/vendor_completions.d/gopass.fish
 	vlicense LICENSE
 }

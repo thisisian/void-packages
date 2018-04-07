@@ -1,6 +1,6 @@
 # Template file for 'ckbcomp'
 pkgname=ckbcomp
-version=1.173
+version=1.181
 revision=1
 wrksrc="console-setup"
 noarch=yes
@@ -8,9 +8,9 @@ depends="perl"
 maintainer="cr6git <quark6@protonmail.com>"
 short_desc="Compile a XKB keyboard description to a keymap suitable for loadkeys"
 homepage="https://anonscm.debian.org/cgit/d-i/console-setup.git"
-license="GPL-2"
+license="GPL-2.0-or-later"
 distfiles="${DEBIAN_SITE}/main/c/console-setup/console-setup_${version}.tar.xz"
-checksum=2db18253a69abe356dfd039d743b8d2f5a53aad236754f94b28a5d80a1749dfe
+checksum=25094fcffa783f783138398a44afd59149b3a5063715cf71f3339afa8ce45876
 
 do_install() {
 	vbin Keyboard/ckbcomp

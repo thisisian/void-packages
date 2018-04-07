@@ -1,7 +1,7 @@
 # Template file for 'python-matplotlib'
 pkgname=python-matplotlib
-version=2.0.2
-revision=2
+version=2.2.2
+revision=1
 wrksrc="matplotlib-${version}"
 build_style=python-module
 hostmakedepends="pkg-config python-setuptools python3-setuptools"
@@ -15,16 +15,16 @@ makedepends="
  python-pyside python3-pyside python-cairocffi python3-cairocffi
  python-gobject-devel pygtk-devel gtk+3-devel tk-devel python-tkinter
  python3-tkinter wxPython-devel freetype-devel libpng-devel libqhull-devel"
-depends="python-matplotlib-data>=${version}_${revision} python-numpy
- python-six python-dateutil python-functools32 python-subprocess32
- python-pytz python-cycler python-parsing"
+depends="python-matplotlib-data>=${version}_${revision} python-numpy python-six
+ python-dateutil python-parsing python-pytz python-cycler python-kiwisolver
+ python-backports.functools_lru_cache python-subprocess32"
 pycompile_module="matplotlib mpl_toolkits pylab.py"
 short_desc="Python2 2D/3D plotting library"
 maintainer="Alessio Sergi <al3hex@gmail.com>"
-homepage="http://matplotlib.org/"
-license="matplotlib, BSD, MIT"
-distfiles="${PYPI_SITE}/m/matplotlib/matplotlib-${version}.tar.gz"
-checksum=0ffbc44faa34a8b1704bc108c451ecf87988f900ef7ce757b8e2e84383121ff1
+homepage="https://matplotlib.org/"
+license="matplotlib, BSD-3-Clause, MIT"
+distfiles="https://github.com/matplotlib/matplotlib/archive/v${version}.tar.gz"
+checksum=3a8236e6747dbb48c342ee194a8ced2805205cbd718899b284e4d617189cd397
 
 export XDG_RUNTIME_DIR=/tmp
 
@@ -38,8 +38,11 @@ pre_build() {
 	EOF
 	# adjust path
 	sed -i 's,\(site-packages/matplotlib/mpl-data\),/etc,' matplotlibrc.template
+	# adjust qhull path
+	sed -i "s|'libqhull',|'qhull',|" setupext.py
 }
 post_install() {
+	vlicense LICENSE/LICENSE
 	# remove data files
 	rm -rf ${DESTDIR}/usr/lib/python*/site-packages/matplotlib/mpl-data
 }
@@ -58,7 +61,8 @@ python-matplotlib-data_package() {
 }
 python3-matplotlib_package() {
 	depends="python-matplotlib-data>=${version}_${revision} python3-numpy
-	 python3-six python3-dateutil python3-pytz python3-cycler python3-parsing"
+	 python3-six python3-dateutil python3-parsing python3-pytz python3-cycler
+	 python3-kiwisolver"
 	short_desc="${short_desc/Python2/Python3}"
 	pycompile_module="matplotlib mpl_toolkits pylab.py"
 	pkg_install() {

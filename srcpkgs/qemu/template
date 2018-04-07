@@ -1,13 +1,13 @@
 # Template file for 'qemu'
 pkgname=qemu
-version=2.10.1
-revision=2
+version=2.11.1
+revision=1
 short_desc="Open Source Processor Emulator"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 homepage="http://qemu.org"
 license="GPL-2, LGPL-2.1"
 distfiles="http://wiki.qemu.org/download/qemu-${version}.tar.bz2"
-checksum=8e040bc7556401ebb3a347a8f7878e9d4028cf71b2744b1a1699f4e741966ba8
+checksum=d9df2213ceed32e91dab7bc9dd19c1af83f91ba72c7aeef7605dfaaf81732ccb
 nocross="https://api.travis-ci.org/jobs/210268003/log.txt"
 
 nostrip=yes

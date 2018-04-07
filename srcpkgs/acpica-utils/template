@@ -1,6 +1,6 @@
 # Template file for 'acpica-utils'
 pkgname=acpica-utils
-version=20171110
+version=20180313
 revision=1
 wrksrc="acpica-unix-${version}"
 only_for_archs="i686 i686-musl x86_64 x86_64-musl"
@@ -10,7 +10,7 @@ homepage="https://www.acpica.org/"
 license="GPL-2, 3-clause-BSD"
 maintainer="Juan RP <xtraeme@voidlinux.eu>"
 distfiles="https://acpica.org/sites/acpica/files/acpica-unix-${version}.tar.gz"
-checksum=56ac1f870db698fc46f9be0698abe6f4b5bf189bfb12cf982302c0a8f920856a
+checksum=958b5b75617732f6024484c32476cf0759b5777eb827a5e45f1cf3b45d174b15
 
 do_build() {
 	sed -e 's/_CYGWIN/_LINUX/g' -e 's/-Werror//g' -i generate/unix/Makefile.config generate/unix/iasl/Makefile
@@ -22,4 +22,5 @@ do_build() {
 }
 do_install() {
 	make DESTDIR=${DESTDIR} install
+	vlicense ${FILESDIR}/LICENSE
 }

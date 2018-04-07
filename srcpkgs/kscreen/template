@@ -1,6 +1,6 @@
 # Template file for 'kscreen'
 pkgname=kscreen
-version=5.11.3
+version=5.12.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -12,5 +12,5 @@ maintainer="Denis Revin <denis.revin@gmail.com>"
 license="GPL-2"
 homepage="https://projects.kde.org/projects/plasma/kscreen"
 distfiles="http://download.kde.org/stable/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=b799e53352ed56fbb53a70ea61056ba91b8e671bb379024a3f846b8637ce8c0f
+checksum=9b661ef8a21a4a5bfc47e76f92c62c6893da4081de12eac07e549a87c14a9cfb
 nocross="Exec format error on compiling"
